@@ -1,0 +1,286 @@
+{
+  "scenario": {
+    "year": 2055,
+    "status": "project_scenario",
+    "predictionClaim": false,
+    "interpretation": "Grover系量子探索が特定の業務領域で実用的なユーティリティを持つ社会を、 共通条件の下で検討するためのシナリオ基準年。"
+  },
+  "stories": [
+    {
+      "id": "traffic_story_001",
+      "title": "交通・配送ストーリー（ドラフト）",
+      "summary": "受取条件と配送計画が継続的に調整される。",
+      "domain": "交通・配送",
+      "scenarioYear": 2055,
+      "status": "draft",
+      "sourceRefs": [
+        "WS02/IDEA2034"
+      ],
+      "application": "制約付き配送計画候補探索",
+      "story": "2055年の朝、ある利用者は荷物の到着予定を確認せずに家を出る。配送サービスは、 受取場所、本人の予定、車両の容量、配送員の勤務時間、道路状況、充電条件を参照し、 実行可能な複数の配送計画から候補を選び直している。利用者は帰宅途中に通知を受け、 駅近くの受取設備か自宅への配送を選ぶ。荷物のために会議や外出を変更する必要はない。 一方で、本人の予定がどこまで利用されるのか、配送員の休憩や裁量が効率化によって 狭められていないかは、利用画面からは分からない。",
+      "protagonist": {
+        "name": "provisional",
+        "role": "urban_service_user",
+        "everydayActivity": "荷物の受け取り"
+      },
+      "everydayScenes": [
+        {
+          "id": "scene_1",
+          "text": "配送時間のために外出を延期する現在の負担"
+        },
+        {
+          "id": "scene_2",
+          "text": "柔軟配送サービスが複数の受取条件を調整する"
+        },
+        {
+          "id": "scene_3",
+          "text": "人物は荷物を意識せず予定通りに外出する"
+        },
+        {
+          "id": "scene_4",
+          "text": "配送員の裁量と予定データ利用について疑問が残る"
+        }
+      ],
+      "worldConditions": [
+        "fault_tolerant_quantum_compute_is_commercially_accessible",
+        "classical_and_quantum_compute_use_standard_interfaces",
+        "service_level_agreements_cover_latency_reliability_and_cost",
+        "regulated_data_exchange_is_available",
+        "classical_fallback_exists"
+      ],
+      "lifeChange": {
+        "activity": "荷物の受け取り",
+        "currentBurden": "配送予定に合わせて在宅・外出予定を調整する。",
+        "futureChange": "受取条件と配送計画が継続的に調整される。"
+      },
+      "seeds": [
+        {
+          "id": "t_algorithm",
+          "name": "Groverベース最小値探索",
+          "description": "Algorithm · Fixed Engineering Baseline",
+          "type": "algorithm",
+          "status": "fixed_engineering_baseline",
+          "relatedScene": {
+            "id": "scene_2",
+            "text": "柔軟配送サービスが複数の受取条件を調整する"
+          }
+        },
+        {
+          "id": "t_candidates",
+          "name": "車両・訪問順序・時間帯・充電行動を含む配送計画候補",
+          "description": "Candidate Space · Fixed Engineering Baseline",
+          "type": "candidate_space",
+          "status": "fixed_engineering_baseline",
+          "relatedScene": {
+            "id": "scene_2",
+            "text": "柔軟配送サービスが複数の受取条件を調整する"
+          }
+        },
+        {
+          "id": "t_service",
+          "name": "受取予定に追従する柔軟配送サービス",
+          "description": "Service · Project Scenario",
+          "type": "service",
+          "status": "project_scenario",
+          "relatedScene": {
+            "id": "scene_2",
+            "text": "柔軟配送サービスが複数の受取条件を調整する"
+          }
+        },
+        {
+          "id": "t_change",
+          "name": "荷物を待つために予定を変更しなくてもよい",
+          "description": "Everyday Change · Workshop Derived",
+          "type": "everyday_change",
+          "status": "workshop_derived",
+          "relatedScene": {
+            "id": "scene_3",
+            "text": "人物は荷物を意識せず予定通りに外出する"
+          }
+        },
+        {
+          "id": "t_privacy",
+          "name": "予定・位置情報の目的限定とアクセス制御",
+          "description": "Social Requirement · Open Question",
+          "type": "social_requirement",
+          "status": "open_question",
+          "relatedScene": {
+            "id": "scene_4",
+            "text": "配送員の裁量と予定データ利用について疑問が残る"
+          }
+        },
+        {
+          "id": "t_worker_risk",
+          "name": "配送員の裁量や休憩を圧迫する可能性",
+          "description": "Unintended Effect · Open Question",
+          "type": "unintended_effect",
+          "status": "open_question",
+          "relatedScene": {
+            "id": "scene_4",
+            "text": "配送員の裁量と予定データ利用について疑問が残る"
+          }
+        }
+      ],
+      "sourceFiles": [
+        "content/use-cases/traffic/story.md",
+        "content/use-cases/traffic/story-metadata.yml",
+        "content/use-cases/traffic/character.yml",
+        "content/use-cases/traffic/plot.yml",
+        "content/use-cases/traffic/selected-change.yml",
+        "content/use-cases/traffic/engineering-map-2055.yml",
+        "content/framework/world-baseline.yml"
+      ]
+    },
+    {
+      "id": "food_nutrition_story_001",
+      "title": "食料・栄養ストーリー（ドラフト）",
+      "summary": "条件を満たす複数の食事候補から本人が選択する。",
+      "domain": "食料・栄養",
+      "scenarioYear": 2055,
+      "status": "draft",
+      "sourceRefs": [
+        "WS14/IDEA3012"
+      ],
+      "application": "栄養要件付き食料調達・献立候補探索",
+      "story": "2055年の夕方、ある利用者は食事サービスに並んだ四つの候補から夕食を選ぶ。 候補は、本人が許可した栄養条件とアレルギー情報、近隣の在庫、旬、価格、 調理能力、食品廃棄を同時に満たしている。以前のように栄養成分を一つずつ確認する 必要はないが、好きな料理を選ぶ余地は残されている。一方で、健康情報を誰が 閲覧できるのか、最適と判断された食事が地域の食文化や本人の選択を狭めないかは、 継続して議論されている。",
+      "protagonist": {
+        "name": "provisional",
+        "role": "meal_service_user",
+        "everydayActivity": "毎日の食事選択"
+      },
+      "everydayScenes": [
+        {
+          "id": "scene_1",
+          "text": "栄養と価格を気にして食事選択に時間がかかる"
+        },
+        {
+          "id": "scene_2",
+          "text": "条件を満たす複数の候補が提示される"
+        },
+        {
+          "id": "scene_3",
+          "text": "人物は好みに基づいて候補から選ぶ"
+        },
+        {
+          "id": "scene_4",
+          "text": "健康データ利用と食の画一化について疑問が残る"
+        }
+      ],
+      "worldConditions": [
+        "fault_tolerant_quantum_compute_is_commercially_accessible",
+        "classical_and_quantum_compute_use_standard_interfaces",
+        "service_level_agreements_cover_latency_reliability_and_cost",
+        "regulated_data_exchange_is_available",
+        "classical_fallback_exists"
+      ],
+      "lifeChange": {
+        "activity": "毎日の食事選択",
+        "currentBurden": "栄養、価格、在庫、好みを個人が個別に確認する。",
+        "futureChange": "条件を満たす複数の食事候補から本人が選択する。"
+      },
+      "seeds": [
+        {
+          "id": "f_algorithm",
+          "name": "Groverベース最小値探索",
+          "description": "Algorithm · Fixed Engineering Baseline",
+          "type": "algorithm",
+          "status": "fixed_engineering_baseline",
+          "relatedScene": {
+            "id": "scene_2",
+            "text": "条件を満たす複数の候補が提示される"
+          }
+        },
+        {
+          "id": "f_candidates",
+          "name": "食材・数量・調達先・献立・調理順序を含む候補",
+          "description": "Candidate Space · Fixed Engineering Baseline",
+          "type": "candidate_space",
+          "status": "fixed_engineering_baseline",
+          "relatedScene": {
+            "id": "scene_2",
+            "text": "条件を満たす複数の候補が提示される"
+          }
+        },
+        {
+          "id": "f_service",
+          "name": "選択可能な栄養対応型食事・調達サービス",
+          "description": "Service · Project Scenario",
+          "type": "service",
+          "status": "project_scenario",
+          "relatedScene": {
+            "id": "scene_2",
+            "text": "条件を満たす複数の候補が提示される"
+          }
+        },
+        {
+          "id": "f_change",
+          "name": "栄養を細かく計算し続けずに食の選択肢を保てる",
+          "description": "Everyday Change · Workshop Derived",
+          "type": "everyday_change",
+          "status": "workshop_derived",
+          "relatedScene": {
+            "id": "scene_3",
+            "text": "人物は好みに基づいて候補から選ぶ"
+          }
+        },
+        {
+          "id": "f_health_data",
+          "name": "健康・アレルギー情報の厳格な利用統制",
+          "description": "Social Requirement · Open Question",
+          "type": "social_requirement",
+          "status": "open_question",
+          "relatedScene": {
+            "id": "scene_4",
+            "text": "健康データ利用と食の画一化について疑問が残る"
+          }
+        },
+        {
+          "id": "f_autonomy_risk",
+          "name": "食文化・嗜好・本人の選択を狭める可能性",
+          "description": "Unintended Effect · Open Question",
+          "type": "unintended_effect",
+          "status": "open_question",
+          "relatedScene": {
+            "id": "scene_4",
+            "text": "健康データ利用と食の画一化について疑問が残る"
+          }
+        }
+      ],
+      "sourceFiles": [
+        "content/use-cases/food-nutrition/story.md",
+        "content/use-cases/food-nutrition/story-metadata.yml",
+        "content/use-cases/food-nutrition/character.yml",
+        "content/use-cases/food-nutrition/plot.yml",
+        "content/use-cases/food-nutrition/selected-change.yml",
+        "content/use-cases/food-nutrition/engineering-map-2055.yml",
+        "content/framework/world-baseline.yml"
+      ]
+    }
+  ],
+  "lenses": [
+    {
+      "id": "technology",
+      "name": "Technology",
+      "description": "",
+      "questions": []
+    },
+    {
+      "id": "policy",
+      "name": "Policy",
+      "description": "",
+      "questions": []
+    },
+    {
+      "id": "design",
+      "name": "Design",
+      "description": "",
+      "questions": []
+    },
+    {
+      "id": "business",
+      "name": "Business",
+      "description": "",
+      "questions": []
+    }
+  ]
+}

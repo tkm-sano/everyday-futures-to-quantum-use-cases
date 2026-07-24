@@ -71,6 +71,15 @@ Q/ESTのデザイン言語を踏襲した静的HTML、CSS、JavaScriptで実装�
 サイトには提案書から整理した目的、Guiding Question、セッション構造、未来ストーリー例、
 対象者、主催者情報を掲載しています。
 
+ページ構成：
+
+- `/`：既存のBoFトップページ
+- `/about/`：プロジェクト、2055年シナリオ、BoF、メンバー、ワークショップ背景
+- `/explore/`：Story → Seed → Lensの6段階探索フロー
+
+探索データは`content/use-cases/`と`content/framework/`のYAMLを正本とし、
+`python tools/build_site_data.py`で`site/data/explorer.json`へ変換します。
+
 ## Repository structure
 
 ```text
@@ -152,6 +161,7 @@ Workflow：
 ## Documentation
 
 - [Framework](docs/framework.md)
+- [Explore Use Cases content workplan (Japanese)](docs/explore-use-cases-content-workplan-ja.md)
 - [Data and publication policy](docs/data-policy.md)
 - [Evidence and uncertainty](docs/evidence.md)
 - [Workshop and production guide](docs/workshop-guide.md)

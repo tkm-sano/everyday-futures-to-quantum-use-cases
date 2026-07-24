@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore future stories, select an idea seed, expand it through a lens, and review the resulting use-case path.">
+  <meta name="theme-color" content="#f4f8ff">
+  <title>Explore Use Cases | Everyday Futures to Quantum Use Cases</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg?v=20260724b">
+  <link rel="stylesheet" href="../styles.css?v=20260724b">
+</head>
+<body>
+  <canvas id="quantum-bubbles" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <a class="brand" href="https://q-est.org/" target="_blank" rel="noopener noreferrer"
+      aria-label="Visit the Q/est website">
+      <img class="brand-logo" src="../assets/qest-logo-icon.png?v=20260724b" alt="">
+      <span class="brand-copy"><strong>Q/est</strong></span>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="brand-institute">
+        <span>Graduate School of Media Design</span>
+        <span>Keio University, Japan</span>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Open navigation"
+      aria-controls="site-nav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+      <a href="../about/">About Us</a>
+      <a href="./" aria-current="page">Explore Use Cases</a>
+      <a class="nav-cta" href="#explorer">Start Exploring</a>
+    </nav>
+  </header>
+
+  <main class="subpage-main explore-main">
+    <section class="subpage-hero explore-hero" aria-labelledby="explore-page-title">
+      <p class="kicker">Story → Seed → Lens</p>
+      <h1 id="explore-page-title">Explore Use Cases</h1>
+      <p>
+        Select a future-life story, examine its world, choose one idea seed, expand it through a
+        lens, and review the path created for discussion.
+      </p>
+    </section>
+
+    <section id="explorer" class="explorer-shell" aria-labelledby="explorer-title">
+      <div class="explorer-heading">
+        <div>
+          <p class="eyebrow">Guided exploration</p>
+          <h2 id="explorer-title">Build a discussion path from existing story data</h2>
+        </div>
+        <button id="reset-explorer" class="text-button" type="button">Reset selections</button>
+      </div>
+
+      <div class="progress-scroll" role="region" aria-label="Exploration progress">
+        <ol class="step-progress">
+          <li data-progress-step="0" aria-current="step">
+            <span>1</span><strong>Select a Story</strong>
+          </li>
+          <li data-progress-step="1">
+            <span>2</span><strong>Explore the Story World</strong>
+          </li>
+          <li data-progress-step="2">
+            <span>3</span><strong>Select an Idea Seed</strong>
+          </li>
+          <li data-progress-step="3">
+            <span>4</span><strong>Expand the Seed</strong>
+          </li>
+          <li data-progress-step="4">
+            <span>5</span><strong>Select a Lens</strong>
+          </li>
+          <li data-progress-step="5">
+            <span>6</span><strong>Review the Discussion</strong>
+          </li>
+        </ol>
+      </div>
+
+      <p id="explorer-status" class="explorer-status" role="status" aria-live="polite">
+        Loading story data…
+      </p>
+
+      <section class="explorer-step" data-step="0" aria-labelledby="step-story-title">
+        <div class="step-heading">
+          <span>Step 1 of 6</span>
+          <h2 id="step-story-title">Select a Story</h2>
+          <p>Choose one existing 2055 future story as the starting point.</p>
+        </div>
+        <div id="story-card-list" class="selection-grid story-selection-grid"></div>
+        <div class="explorer-actions">
+          <span></span>
+          <button id="story-next" class="primary-button" type="button" disabled>
+            Explore the Story World
+          </button>
+        </div>
+      </section>
+
+      <section class="explorer-step" data-step="1" aria-labelledby="step-world-title" hidden>
+        <div class="step-heading">
+          <span>Step 2 of 6</span>
+          <h2 id="step-world-title">Explore the Story World</h2>
+          <p>Review the story, protagonist, everyday scenes, world conditions, and life change.</p>
+        </div>
+        <article class="story-world">
+          <header>
+            <p id="world-domain" class="eyebrow"></p>
+            <h3 id="world-story-title"></h3>
+          </header>
+          <div id="world-story-body" class="story-prose" lang="ja"></div>
+          <div class="world-detail-grid">
+            <section>
+              <h4>Protagonist</h4>
+              <dl id="world-protagonist"></dl>
+            </section>
+            <section>
+              <h4>Everyday scenes</h4>
+              <ol id="world-scenes" class="compact-list" lang="ja"></ol>
+            </section>
+            <section>
+              <h4>2055 world conditions</h4>
+              <ul id="world-conditions" class="compact-list"></ul>
+            </section>
+            <section>
+              <h4>Change in everyday life</h4>
+              <dl id="world-change" lang="ja"></dl>
+            </section>
+          </div>
+        </article>
+        <div class="explorer-actions">
+          <button class="secondary-button" type="button" data-back-to="0">Back</button>
+          <button class="primary-button" type="button" data-next-to="2">Select an Idea Seed</button>
+        </div>
+      </section>
+
+      <section class="explorer-step" data-step="2" aria-labelledby="step-seed-title" hidden>
+        <div class="step-heading">
+          <span>Step 3 of 6</span>
+          <h2 id="step-seed-title">Select an Idea Seed</h2>
+          <p>Choose one technical, service, social, or everyday-life element from the story.</p>
+        </div>
+        <div id="seed-card-list" class="selection-grid seed-selection-grid"></div>
+        <div class="explorer-actions">
+          <button class="secondary-button" type="button" data-back-to="1">Back</button>
+          <button id="seed-next" class="primary-button" type="button" disabled>
+            Expand the Seed
+          </button>
+        </div>
+      </section>
+
+      <section class="explorer-step" data-step="3" aria-labelledby="step-expand-title" hidden>
+        <div class="step-heading">
+          <span>Step 4 of 6</span>
+          <h2 id="step-expand-title">Expand the Seed</h2>
+        </div>
+        <div class="expand-panel">
+          <p class="expand-label">EXPAND</p>
+          <p class="expand-concept">
+            Select one seed contained in the story and expand it into another element that helps
+            make the future society possible.
+          </p>
+          <article id="expand-selected-seed" class="selected-summary-card"></article>
+        </div>
+        <div class="explorer-actions">
+          <button class="secondary-button" type="button" data-back-to="2">Back</button>
+          <button class="primary-button" type="button" data-next-to="4">Select a Lens</button>
+        </div>
+      </section>
+
+      <section class="explorer-step" data-step="4" aria-labelledby="step-lens-title" hidden>
+        <div class="step-heading">
+          <span>Step 5 of 6</span>
+          <h2 id="step-lens-title">Select a Lens</h2>
+          <p>Choose one lens for expanding the selected seed.</p>
+        </div>
+        <div id="lens-card-list" class="lens-grid"></div>
+        <div class="explorer-actions">
+          <button class="secondary-button" type="button" data-back-to="3">Back</button>
+          <button id="lens-next" class="primary-button" type="button" disabled>
+            Review the Discussion
+          </button>
+        </div>
+      </section>
+
+      <section class="explorer-step" data-step="5" aria-labelledby="step-review-title" hidden>
+        <div class="step-heading">
+          <span>Step 6 of 6</span>
+          <h2 id="step-review-title">Review the Discussion</h2>
+          <p>Confirm the Story → Seed → Lens path selected for discussion.</p>
+        </div>
+        <div class="review-flow" aria-label="Selected discussion path">
+          <article>
+            <span>Story</span>
+            <strong id="review-story"></strong>
+          </article>
+          <span class="review-arrow" aria-hidden="true">→</span>
+          <article>
+            <span>Seed</span>
+            <strong id="review-seed"></strong>
+          </article>
+          <span class="review-arrow" aria-hidden="true">→</span>
+          <article>
+            <span>Lens</span>
+            <strong id="review-lens"></strong>
+          </article>
+        </div>
+        <div class="review-details">
+          <p><span>Story domain</span><strong id="review-domain"></strong></p>
+          <p><span>Related story scene</span><strong id="review-scene"></strong></p>
+          <p><span>Expansion method</span><strong>EXPAND</strong></p>
+        </div>
+        <div class="explorer-actions">
+          <button class="secondary-button" type="button" data-back-to="4">Back</button>
+          <button id="start-over" class="primary-button" type="button">Start a New Path</button>
+        </div>
+      </section>
+
+      <noscript>
+        <p class="error-message">JavaScript is required to use the guided exploration.</p>
+      </noscript>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p><a href="../">Developing Quantum Use Cases from Future Everyday Life Scenarios</a></p>
+    <small>Birds-of-a-Feather session</small>
+  </footer>
+
+  <script src="../bubbles.js?v=20260724b"></script>
+  <script src="../app.js?v=20260724b"></script>
+  <script src="./explore.js?v=20260724b"></script>
+</body>
+</html>
