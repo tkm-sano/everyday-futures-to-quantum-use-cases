@@ -1,0 +1,10 @@
+candidate_model:
+  entity: food_procurement_and_menu_plan
+  variables:
+    - ingredient_selection
+    - quantity
+    - procurement_source
+    - menu_assignment
+    - preparation_schedule
+  encoding: to_be_engineered
+  candidate_count_or_upper_bound: null

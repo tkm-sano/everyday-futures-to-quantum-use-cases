@@ -1,0 +1,5 @@
+selected_change:
+  id: nutrition_management_burden_reduced
+  activity: 毎日の食事選択
+  current_burden: 栄養、価格、在庫、好みを個人が個別に確認する。
+  future_change: 条件を満たす複数の食事候補から本人が選択する。

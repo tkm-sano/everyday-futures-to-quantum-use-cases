@@ -1,0 +1,6 @@
+infrastructures:
+  - classical_cloud_or_hpc
+  - fault_tolerant_quantum_compute
+  - secure_data_exchange
+  - monitoring_and_audit
+  - fallback_service

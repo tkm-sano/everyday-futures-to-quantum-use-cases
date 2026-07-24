@@ -1,0 +1,7 @@
+components:
+  - user_app
+  - nutrition_database
+  - inventory_system
+  - classical_planner
+  - quantum_search_service
+  - audit_log

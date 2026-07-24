@@ -1,0 +1,4 @@
+source_system:
+  type: restricted_google_drive
+  original_file_committed: false
+  local_working_directory: data/private/

@@ -1,0 +1,6 @@
+excluded_assumptions:
+  - grover_utility_is_guaranteed_for_every_problem
+  - quantum_compute_replaces_all_classical_compute
+  - service_outputs_are_always_correct
+  - optimized_plan_is_automatically_fair
+  - personal_data_is_freely_available

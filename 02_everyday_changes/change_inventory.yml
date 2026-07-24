@@ -1,0 +1,12 @@
+changes:
+  - id: traffic_waiting_constraint_removed
+    domain: traffic
+    statement: 配送を待つために外出や仕事の予定を変更しなくてもよい。
+    source_refs:
+      - WS02/IDEA2034
+
+  - id: nutrition_management_burden_reduced
+    domain: food_nutrition
+    statement: 栄養バランスを細かく計算し続けなくても食の選択肢を保てる。
+    source_refs:
+      - WS14/IDEA3012

@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: Everyday Futures to Quantum Use Cases
+message: Please cite this repository when reusing its framework or workshop materials.
+type: software
+authors:
+  - family-names: Sano
+    given-names: Takuma
+repository-code: https://github.com/tkm-sano/everyday-futures-to-quantum-use-cases
+url: https://tkm-sano.github.io/everyday-futures-to-quantum-use-cases/
+license: MIT
+version: 0.1.0
+date-released: 2026-07-24

@@ -1,0 +1,12 @@
+world_baseline:
+  year: 2055
+  assumptions:
+    - fault_tolerant_quantum_compute_is_commercially_accessible
+    - classical_and_quantum_compute_use_standard_interfaces
+    - service_level_agreements_cover_latency_reliability_and_cost
+    - regulated_data_exchange_is_available
+    - classical_fallback_exists
+  not_assumed:
+    - universal_quantum_advantage
+    - error_free_quantum_computation
+    - automatic_social_benefit

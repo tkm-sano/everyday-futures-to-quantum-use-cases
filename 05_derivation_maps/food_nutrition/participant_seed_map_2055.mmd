@@ -1,0 +1,14 @@
+flowchart TB
+    A[2055: Grover-family search utility]
+    B[Food procurement and menu candidates]
+    C[Nutrition / allergy / inventory / budget constraints]
+    D[Search for feasible high-quality candidates]
+    E[Add a product or service]
+    F[Add a user and activity]
+    G[Add an everyday change]
+    H[Add a requirement or unintended effect]
+    A --> B --> C --> D
+    D -. participant derivation .-> E
+    E -.-> F
+    F -.-> G
+    G -.-> H

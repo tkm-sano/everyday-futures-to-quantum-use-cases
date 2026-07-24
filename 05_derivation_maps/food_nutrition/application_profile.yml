@@ -1,0 +1,15 @@
+application:
+  id: nutrition_aware_food_planning
+  name: 栄養要件付き食料調達・献立候補探索
+  scenario_year: 2055
+decision_variables:
+  - ingredient_selection
+  - ingredient_quantity
+  - procurement_source
+  - meal_assignment
+  - preparation_schedule
+candidate_definition: >
+  食材、数量、調達先、献立、提供対象、調理順序を割り当てた食料供給・食事計画。
+service_latency:
+  target_class: hours_to_days
+  exact_value: null

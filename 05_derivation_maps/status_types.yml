@@ -1,0 +1,7 @@
+status_types:
+  fixed_engineering_baseline: 運営側が固定する工学的前提
+  quantitative_reference: 文献または資源推定に基づく参考
+  project_scenario: 2055年の世界を成立させる仮定
+  workshop_derived: 過去のワークショップ記録から得た要素
+  participant_derivation: BoF参加者が追加する派生
+  open_question: 技術的・実用的・社会的に未解決

@@ -1,0 +1,8 @@
+scenario_time:
+  target_year: 2055
+  status: project_scenario
+  prediction_claim: false
+  confidence: low
+  interpretation: >
+    Grover系量子探索が特定の業務領域で実用的なユーティリティを持つ社会を、
+    共通条件の下で検討するためのシナリオ基準年。

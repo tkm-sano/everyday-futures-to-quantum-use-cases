@@ -1,0 +1,9 @@
+materials:
+  engineering_map:
+    participant_release: after_initial_derivation
+  facilitator_full_map:
+    participant_release: only_when_needed
+  quantitative_resource_references:
+    participant_release: during_technical_discussion
+  raw_workshop_records:
+    participant_release: never

@@ -1,0 +1,5 @@
+selected_change:
+  id: traffic_waiting_constraint_removed
+  activity: 荷物の受け取り
+  current_burden: 配送予定に合わせて在宅・外出予定を調整する。
+  future_change: 受取条件と配送計画が継続的に調整される。

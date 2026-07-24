@@ -1,0 +1,13 @@
+requirements:
+  - id: explicit_classical_baseline
+    must: true
+  - id: end_to_end_cost_accounting
+    must: true
+  - id: oracle_cost_included
+    must: true
+  - id: error_correction_cost_included
+    must: true
+  - id: service_latency_met
+    must: true
+  - id: fallback_defined
+    must: true

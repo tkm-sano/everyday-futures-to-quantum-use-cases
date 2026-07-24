@@ -1,0 +1,16 @@
+model:
+  assumption: one_marked_item
+  ideal_queries: floor(pi_over_4_times_sqrt_candidate_count)
+  warning: >
+    理想的なオラクル問い合わせ回数であり、状態準備、オラクル回路、
+    誤り訂正、測定、再実行、古典処理を含まない。
+reference_points:
+  - candidate_bits: 30
+    candidate_count_expression: 2^30
+    ideal_iterations_approx: 25735
+  - candidate_bits: 40
+    candidate_count_expression: 2^40
+    ideal_iterations_approx: 823549
+  - candidate_bits: 50
+    candidate_count_expression: 2^50
+    ideal_iterations_approx: 26353589

@@ -1,0 +1,14 @@
+required_outputs:
+  - logical_qubits
+  - logical_gate_count
+  - t_count
+  - t_depth
+  - physical_qubits
+  - code_distance
+  - execution_time
+  - success_probability
+  - repetitions
+policy:
+  no_resource_claim_without_reproducible_model: true
+  oracle_cost_must_be_included: true
+  classical_baseline_must_be_included: true

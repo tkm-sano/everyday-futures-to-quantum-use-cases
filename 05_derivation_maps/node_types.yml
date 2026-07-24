@@ -1,0 +1,21 @@
+node_types:
+  - algorithm
+  - execution_mode
+  - input_data
+  - decision_variable
+  - candidate_space
+  - feasibility_constraint
+  - feasibility_oracle
+  - objective_function
+  - objective_oracle
+  - quantum_subroutine
+  - verification_function
+  - system_function
+  - product
+  - service
+  - user
+  - user_activity
+  - everyday_change
+  - social_requirement
+  - unintended_effect
+  - open_question

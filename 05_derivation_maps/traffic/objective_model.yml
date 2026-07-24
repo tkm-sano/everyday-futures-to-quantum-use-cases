@@ -1,0 +1,8 @@
+objective:
+  direction: minimize
+  components:
+    - total_travel_time
+    - delivery_delay
+    - workload_imbalance
+    - charging_delay
+  aggregation: to_be_defined

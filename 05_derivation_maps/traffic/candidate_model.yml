@@ -1,0 +1,9 @@
+candidate_model:
+  entity: delivery_plan
+  variables:
+    - vehicle_assignment
+    - visit_sequence
+    - time_slot
+    - charging_action
+  encoding: to_be_engineered
+  candidate_count_or_upper_bound: null

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Derivation map",
+  "type": "object",
+  "required": [
+    "map",
+    "nodes",
+    "edges"
+  ],
+  "properties": {
+    "map": {
+      "type": "object",
+      "required": [
+        "id",
+        "scenario_year",
+        "domain"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "scenario_year": {
+          "const": 2055
+        },
+        "domain": {
+          "enum": [
+            "overview",
+            "traffic",
+            "food_nutrition"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "type",
+          "label",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "source",
+          "target",
+          "type"
+        ],
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "target": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

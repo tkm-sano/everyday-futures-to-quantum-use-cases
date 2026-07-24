@@ -1,0 +1,70 @@
+sources:
+  - id: darpa_qbi
+    title: Quantum Benchmarking Initiative
+    organization: DARPA
+    url: https://www.darpa.mil/research/programs/quantum-benchmarking-initiative
+    evidence_status: official_definition
+    use: Utility-scale operation and the 2033 evaluation target
+    last_verified: 2026-07-24
+
+  - id: ibm_quantum_roadmap
+    title: IBM Quantum Roadmap
+    organization: IBM
+    url: https://www.ibm.com/roadmaps/quantum/
+    evidence_status: announced_roadmap
+    use: Published fault-tolerant system goals
+    last_verified: 2026-07-24
+
+  - id: google_qec_milestone
+    title: Quantum error correction milestone
+    organization: Google Quantum AI
+    url: https://quantumai.google/qecmilestone
+    evidence_status: announced_roadmap
+    last_verified: 2026-07-24
+
+  - id: microsoft_quantum_roadmap
+    title: Microsoft Quantum Roadmap
+    organization: Microsoft
+    url: https://quantum.microsoft.com/en-us/vision/quantum-roadmap
+    evidence_status: announced_roadmap
+    last_verified: 2026-07-24
+
+  - id: grover_1996
+    title: A Fast Quantum Mechanical Algorithm for Database Search
+    doi: 10.1145/237814.237866
+    url: https://doi.org/10.1145/237814.237866
+    evidence_status: peer_reviewed_foundation
+
+  - id: amplitude_amplification
+    title: Quantum Amplitude Amplification and Estimation
+    url: https://arxiv.org/abs/quant-ph/0005055
+    evidence_status: peer_reviewed_foundation
+
+  - id: durr_hoyer
+    title: A Quantum Algorithm for Finding the Minimum
+    url: https://arxiv.org/abs/quant-ph/9607014
+    evidence_status: peer_reviewed_foundation
+
+  - id: microsoft_qre
+    title: Azure Quantum Resource Estimator
+    organization: Microsoft
+    url: https://learn.microsoft.com/en-us/azure/quantum/intro-to-resource-estimation
+    evidence_status: engineering_estimate
+
+  - id: ortools_vrp
+    title: Vehicle Routing Problem
+    organization: Google OR-Tools
+    url: https://developers.google.com/optimization/routing/vrp
+    evidence_status: benchmark_method
+
+  - id: japanese_dietary_reference_2025
+    title: 日本人の食事摂取基準（2025年版）
+    organization: 厚生労働省
+    url: https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/eiyou/syokuji_kijyun.html
+    evidence_status: official_definition
+
+  - id: japanese_food_composition_2023
+    title: 日本食品標準成分表（八訂）増補2023年
+    organization: 文部科学省
+    url: https://www.mext.go.jp/a_menu/syokuhinseibun/mext_00001.html
+    evidence_status: official_definition

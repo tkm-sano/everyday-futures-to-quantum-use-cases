@@ -1,0 +1,16 @@
+technology_baseline:
+  algorithm_family:
+    - grover_search
+    - amplitude_amplification
+    - quantum_minimum_finding
+  required_engineering_elements:
+    - candidate_encoding
+    - reversible_feasibility_oracle
+    - reversible_objective_or_threshold_oracle
+    - measurement_and_repetition
+    - result_verification
+    - fault_tolerance
+    - classical_baseline_comparison
+  utility_scope:
+    claim_level: application_specific
+    end_to_end_required: true

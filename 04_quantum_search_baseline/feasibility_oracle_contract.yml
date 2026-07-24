@@ -1,0 +1,10 @@
+contract:
+  id: feasibility_oracle
+  input: encoded_candidate
+  output: one_qubit_or_phase_mark
+  required:
+    - reversible_constraint_evaluation
+    - ancilla_uncomputation
+    - false_positive_policy
+    - false_negative_policy
+    - logical_resource_estimate

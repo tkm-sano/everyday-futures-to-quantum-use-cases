@@ -1,0 +1,6 @@
+character:
+  id: food_person_001
+  name: provisional
+  role: meal_service_user
+  scenario_year: 2055
+  everyday_activity: 毎日の食事選択

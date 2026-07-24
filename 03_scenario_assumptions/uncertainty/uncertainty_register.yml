@@ -1,0 +1,13 @@
+uncertainties:
+  - id: u_year_2055
+    statement: Grover系探索が2055年に対象用途で実用的であるか。
+    level: high
+    handling: project_scenario_not_prediction
+  - id: u_oracle_cost
+    statement: 複雑な制約オラクルを実用資源で構成できるか。
+    level: high
+    handling: retain_as_engineering_question
+  - id: u_classical_progress
+    statement: 2055年までに古典最適化がどこまで進歩するか。
+    level: high
+    handling: update_classical_baseline_regularly

@@ -1,0 +1,37 @@
+{
+  "scenarioYear": 2055,
+  "scenarioStatus": "Project scenario — not a prediction",
+  "baseline": [
+    "Grover search",
+    "Amplitude amplification",
+    "Quantum minimum finding"
+  ],
+  "modes": [
+    {
+      "title": "Hybrid execution",
+      "description": "古典処理が入力・候補生成・検証・業務制御を担い、量子処理が探索を担う。"
+    },
+    {
+      "title": "Quantum-dominant execution",
+      "description": "候補符号化、制約判定、評価、探索、選択の計算核を主として量子回路内で実行する。"
+    }
+  ],
+  "domains": [
+    {
+      "title": "Traffic & Delivery",
+      "candidate": "車両、訪問順序、時間帯、充電行動を含む配送計画候補",
+      "constraints": "容量、時間窓、勤務、電池、充電設備",
+      "service": "受取予定に追従する柔軟配送サービス",
+      "change": "荷物を待つために予定を変更しなくてもよい",
+      "question": "予定データの利用と配送員の裁量をどう守るか。"
+    },
+    {
+      "title": "Food & Nutrition",
+      "candidate": "食材、数量、調達先、献立、調理順序を含む候補",
+      "constraints": "栄養、アレルギー、在庫、予算、調理能力",
+      "service": "選択可能な栄養対応型食事・調達サービス",
+      "change": "栄養を細かく計算せずに食の選択肢を保てる",
+      "question": "健康データと食文化・本人の選択をどう守るか。"
+    }
+  ]
+}

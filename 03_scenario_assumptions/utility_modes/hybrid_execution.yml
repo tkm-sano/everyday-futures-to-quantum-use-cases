@@ -1,0 +1,18 @@
+utility_mode:
+  id: hybrid
+  label: Hybrid quantum-classical execution
+  quantum_roles:
+    - candidate_search
+    - marked_state_amplification
+    - threshold_search
+    - minimum_finding
+  classical_roles:
+    - data_ingestion
+    - candidate_generation_or_decomposition
+    - oracle_compilation
+    - result_verification
+    - service_control
+    - fallback
+  utility_condition: >
+    前処理、量子実行、通信、検証を含むエンドツーエンドの価値が、
+    同一条件の最良の古典方式を上回る。

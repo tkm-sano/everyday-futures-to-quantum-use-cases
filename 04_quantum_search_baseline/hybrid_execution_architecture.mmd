@@ -1,0 +1,8 @@
+flowchart LR
+    A[Operational data] --> B[Classical preprocessing]
+    B --> C[Candidate generation]
+    C --> D[Oracle compilation]
+    D --> E[Grover-family quantum search]
+    E --> F[Measured candidates]
+    F --> G[Classical verification]
+    G --> H[Service execution]

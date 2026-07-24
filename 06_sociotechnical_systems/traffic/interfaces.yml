@@ -1,0 +1,7 @@
+interfaces:
+  - id: operational_api
+    status: to_be_defined
+  - id: quantum_job_interface
+    status: to_be_defined
+  - id: verification_interface
+    status: to_be_defined

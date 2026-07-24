@@ -1,0 +1,15 @@
+edge_types:
+  - consumes
+  - encodes
+  - constrains
+  - evaluates
+  - invokes
+  - returns
+  - verifies
+  - integrates_into
+  - enables
+  - changes
+  - requires
+  - creates_risk
+  - raises_question
+  - derived_from

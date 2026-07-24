@@ -1,0 +1,7 @@
+story:
+  id: food_nutrition_story_001
+  scenario_year: 2055
+  status: draft
+  central_person_count: 1
+  source_refs:
+    - WS14/IDEA3012

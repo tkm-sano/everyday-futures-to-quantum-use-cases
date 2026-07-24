@@ -1,0 +1,11 @@
+contract:
+  id: objective_or_threshold_oracle
+  input: encoded_candidate
+  output:
+    - objective_register
+    - threshold_mark
+  required:
+    - objective_definition
+    - numerical_precision
+    - reversible_arithmetic
+    - comparison_rule

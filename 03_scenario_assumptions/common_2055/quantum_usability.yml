@@ -1,0 +1,12 @@
+quantum_usability:
+  definition: >
+    量子計算を内部に用いるサービスまたは製品を日常的に利用する人が存在する状態。
+    量子コンピュータを本人が直接操作することは必要条件ではない。
+  traffic:
+    unit: service_users
+    value: null
+    status: scenario_parameter_to_be_defined
+  food_nutrition:
+    unit: service_users
+    value: null
+    status: scenario_parameter_to_be_defined

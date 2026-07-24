@@ -1,0 +1,8 @@
+constraints:
+  - each_demand_served_once
+  - vehicle_capacity
+  - route_continuity
+  - delivery_time_window
+  - worker_shift
+  - battery_range
+  - charging_station_availability

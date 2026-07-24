@@ -1,0 +1,16 @@
+sequence:
+  - phase: opening
+    show:
+      - 2055_baseline
+      - execution_mode_comparison
+      - participant_seed_maps
+  - phase: individual
+    show:
+      - story_card
+  - phase: group
+    show:
+      - editable_seed_map
+  - phase: plenary
+    show:
+      - merged_group_map
+      - selected_quantitative_references

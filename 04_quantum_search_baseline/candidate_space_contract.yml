@@ -1,0 +1,12 @@
+contract:
+  id: candidate_space
+  required_fields:
+    - variable_definitions
+    - encoding
+    - candidate_count_or_bound
+    - invalid_state_handling
+    - source_data
+  must:
+    - define_one_candidate_unambiguously
+    - distinguish_candidate_space_from_feasible_space
+    - document_classical_prefiltering

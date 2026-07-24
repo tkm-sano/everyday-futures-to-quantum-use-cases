@@ -1,0 +1,15 @@
+social_baseline:
+  data_governance:
+    - purpose_limitation
+    - access_control
+    - auditability
+    - data_minimization
+  service_governance:
+    - accountable_operator
+    - human_override
+    - fallback_operation
+    - incident_response
+  inclusion:
+    - non_quantum_access_path
+    - accessibility
+    - regional_equity_review

@@ -1,0 +1,66 @@
+map:
+  id: traffic_engineering_2055
+  scenario_year: 2055
+  domain: traffic
+nodes:
+  - id: t_algorithm
+    type: algorithm
+    label: Groverベース最小値探索
+    status: fixed_engineering_baseline
+  - id: t_candidates
+    type: candidate_space
+    label: 車両・訪問順序・時間帯・充電行動を含む配送計画候補
+    status: fixed_engineering_baseline
+  - id: t_feasibility
+    type: feasibility_oracle
+    label: 容量・時間窓・勤務・電池制約の可逆判定
+    status: open_question
+  - id: t_objective
+    type: objective_oracle
+    label: 移動時間・遅延・負荷の評価と閾値判定
+    status: open_question
+  - id: t_verified_plan
+    type: verification_function
+    label: 古典シミュレーションによる配送計画検証
+    status: fixed_engineering_baseline
+  - id: t_service
+    type: service
+    label: 受取予定に追従する柔軟配送サービス
+    status: project_scenario
+  - id: t_change
+    type: everyday_change
+    label: 荷物を待つために予定を変更しなくてもよい
+    status: workshop_derived
+  - id: t_privacy
+    type: social_requirement
+    label: 予定・位置情報の目的限定とアクセス制御
+    status: open_question
+  - id: t_worker_risk
+    type: unintended_effect
+    label: 配送員の裁量や休憩を圧迫する可能性
+    status: open_question
+edges:
+  - source: t_candidates
+    target: t_feasibility
+    type: constrains
+  - source: t_feasibility
+    target: t_objective
+    type: evaluates
+  - source: t_algorithm
+    target: t_objective
+    type: invokes
+  - source: t_objective
+    target: t_verified_plan
+    type: returns
+  - source: t_verified_plan
+    target: t_service
+    type: integrates_into
+  - source: t_service
+    target: t_change
+    type: changes
+  - source: t_service
+    target: t_privacy
+    type: requires
+  - source: t_service
+    target: t_worker_risk
+    type: creates_risk

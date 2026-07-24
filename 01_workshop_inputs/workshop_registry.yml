@@ -1,0 +1,14 @@
+workshops:
+  - workshop_id: WS01
+    name: SFC
+    publication_scope: derived_anonymized_ideas_only
+  - workshop_id: WS02
+    name: JAIST
+    date: 2025-10-21
+    publication_scope: derived_anonymized_ideas_only
+  - workshop_id: WS03
+    name: WIDE
+    publication_scope: derived_anonymized_ideas_only
+  - workshop_id: WS26
+    name: QCNC
+    publication_scope: aggregated_poll_ideas_only

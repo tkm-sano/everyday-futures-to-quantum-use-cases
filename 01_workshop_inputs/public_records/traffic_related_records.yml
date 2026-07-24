@@ -1,0 +1,16 @@
+records:
+  - workshop_id: WS02
+    idea_id: IDEA2034
+    original_text: 配達時間なし
+    derived_interpretation: 配送を待つために生活予定を変更しなくてもよい。
+    publication:
+      status: pending_review
+      personal_information_removed: true
+
+  - workshop_id: WS01
+    idea_id: IDEA10064
+    original_text: 日程調整という概念の消滅
+    derived_interpretation: 多数の予定と制約を調整する探索サービス。
+    publication:
+      status: pending_review
+      personal_information_removed: true

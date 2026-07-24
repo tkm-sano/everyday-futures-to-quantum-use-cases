@@ -1,0 +1,7 @@
+data_flows:
+  - delivery_requests
+  - time_preferences
+  - traffic_snapshot
+  - candidate_problem
+  - measured_candidates
+  - verified_plan

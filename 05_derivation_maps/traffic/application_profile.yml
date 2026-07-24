@@ -1,0 +1,14 @@
+application:
+  id: traffic_delivery_planning
+  name: 制約付き配送計画候補探索
+  scenario_year: 2055
+decision_variables:
+  - demand_to_vehicle_assignment
+  - visit_order
+  - delivery_time_slot
+  - optional_charging_stop
+candidate_definition: >
+  配送需要について、担当車両、訪問順序、配送時間帯、必要な充電行動を割り当てた計画。
+service_latency:
+  target_class: minutes_to_hours
+  exact_value: null

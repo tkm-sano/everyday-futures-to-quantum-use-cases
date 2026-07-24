@@ -1,0 +1,7 @@
+components:
+  - user_app
+  - dispatch_system
+  - classical_optimizer
+  - quantum_search_service
+  - route_simulator
+  - audit_log

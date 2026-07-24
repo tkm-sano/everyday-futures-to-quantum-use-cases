@@ -1,0 +1,9 @@
+utility_mode:
+  id: quantum_dominant
+  participant_label: 量子主体
+  definition: >
+    候補符号化、制約判定、評価、探索、選択の計算核を主として量子回路内で実行する。
+    古典計算は制御、入出力、測定、最終検証を担う。
+  utility_condition: >
+    符号化、オラクル、誤り訂正、反復、測定を含む総資源量について、
+    同一条件の最良の古典方式を上回る。

@@ -1,0 +1,66 @@
+map:
+  id: food_nutrition_engineering_2055
+  scenario_year: 2055
+  domain: food_nutrition
+nodes:
+  - id: f_algorithm
+    type: algorithm
+    label: Groverベース最小値探索
+    status: fixed_engineering_baseline
+  - id: f_candidates
+    type: candidate_space
+    label: 食材・数量・調達先・献立・調理順序を含む候補
+    status: fixed_engineering_baseline
+  - id: f_feasibility
+    type: feasibility_oracle
+    label: 栄養・アレルギー・在庫・予算・調理能力の可逆判定
+    status: open_question
+  - id: f_objective
+    type: objective_oracle
+    label: 栄養偏差・費用・廃棄・反復の評価と閾値判定
+    status: open_question
+  - id: f_verified_plan
+    type: verification_function
+    label: 栄養・調達可能性・食品安全の古典検証
+    status: fixed_engineering_baseline
+  - id: f_service
+    type: service
+    label: 選択可能な栄養対応型食事・調達サービス
+    status: project_scenario
+  - id: f_change
+    type: everyday_change
+    label: 栄養を細かく計算し続けずに食の選択肢を保てる
+    status: workshop_derived
+  - id: f_health_data
+    type: social_requirement
+    label: 健康・アレルギー情報の厳格な利用統制
+    status: open_question
+  - id: f_autonomy_risk
+    type: unintended_effect
+    label: 食文化・嗜好・本人の選択を狭める可能性
+    status: open_question
+edges:
+  - source: f_candidates
+    target: f_feasibility
+    type: constrains
+  - source: f_feasibility
+    target: f_objective
+    type: evaluates
+  - source: f_algorithm
+    target: f_objective
+    type: invokes
+  - source: f_objective
+    target: f_verified_plan
+    type: returns
+  - source: f_verified_plan
+    target: f_service
+    type: integrates_into
+  - source: f_service
+    target: f_change
+    type: changes
+  - source: f_service
+    target: f_health_data
+    type: requires
+  - source: f_service
+    target: f_autonomy_risk
+    type: creates_risk

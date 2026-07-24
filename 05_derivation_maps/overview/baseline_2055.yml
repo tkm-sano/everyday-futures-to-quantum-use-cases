@@ -1,0 +1,51 @@
+map:
+  id: common_2055_baseline
+  scenario_year: 2055
+  domain: overview
+nodes:
+  - id: n2055
+    type: social_requirement
+    label: 2055年の共通シナリオ世界
+    status: project_scenario
+  - id: grover_family
+    type: algorithm
+    label: Grover探索・振幅増幅・最小値探索
+    status: fixed_engineering_baseline
+  - id: hybrid
+    type: execution_mode
+    label: Hybrid execution
+    status: fixed_engineering_baseline
+  - id: quantum_dominant
+    type: execution_mode
+    label: Quantum-dominant execution
+    status: fixed_engineering_baseline
+  - id: traffic_application
+    type: system_function
+    label: 制約付き配送計画候補探索
+    status: fixed_engineering_baseline
+  - id: food_application
+    type: system_function
+    label: 栄養要件付き食料調達・献立候補探索
+    status: fixed_engineering_baseline
+edges:
+  - source: n2055
+    target: grover_family
+    type: enables
+  - source: grover_family
+    target: hybrid
+    type: integrates_into
+  - source: grover_family
+    target: quantum_dominant
+    type: integrates_into
+  - source: hybrid
+    target: traffic_application
+    type: enables
+  - source: quantum_dominant
+    target: traffic_application
+    type: enables
+  - source: hybrid
+    target: food_application
+    type: enables
+  - source: quantum_dominant
+    target: food_application
+    type: enables

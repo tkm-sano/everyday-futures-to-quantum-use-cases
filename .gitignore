@@ -1,0 +1,76 @@
+# Private workshop records
+/data/private/
+/data/intermediate/
+*_private.*
+*_confidential.*
+*_participants.*
+*_participant_registry.*
+*_consent_records.*
+*_raw_transcript.*
+*_unedited_transcript.*
+
+# Audio and video
+*.wav
+*.m4a
+*.mp3
+*.mp4
+*.mov
+
+# Local spreadsheets under data/
+/data/**/*.xlsx
+/data/**/*.xls
+/data/**/*.csv
+
+# Image generation temporary outputs
+/11_image_generation/raw_outputs/
+/11_image_generation/rejected_outputs/
+
+# Website outputs
+/site/node_modules/
+/site/dist/
+/site/.cache/
+/site/.astro/
+/site/.vite/
+/site/.next/
+/site/out/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account.json
+
+# Local and editor
+*.local.yml
+*.local.yaml
+*.local.json
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo

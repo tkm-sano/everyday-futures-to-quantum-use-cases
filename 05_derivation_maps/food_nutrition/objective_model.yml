@@ -1,0 +1,9 @@
+objective:
+  direction: minimize
+  components:
+    - nutrition_deviation
+    - procurement_cost
+    - food_waste
+    - menu_repetition
+    - transport_burden
+  aggregation: to_be_defined

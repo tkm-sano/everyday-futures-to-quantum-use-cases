@@ -1,0 +1,7 @@
+actors:
+  - service_user
+  - dietitian
+  - food_supplier
+  - meal_operator
+  - quantum_compute_provider
+  - regulator

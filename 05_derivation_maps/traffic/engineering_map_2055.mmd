@@ -1,0 +1,15 @@
+flowchart TB
+    A[Grover-based minimum finding]
+    B[Delivery-plan candidate space]
+    C[Reversible feasibility oracle]
+    D[Objective / threshold oracle]
+    E[Classical verification]
+    F[Adaptive delivery service]
+    G[No need to reorganize the day around delivery]
+    H[Schedule and location-data governance]
+    I[Risk of reducing worker discretion]
+    B --> C --> D
+    A --> D
+    D --> E --> F --> G
+    F --> H
+    F --> I

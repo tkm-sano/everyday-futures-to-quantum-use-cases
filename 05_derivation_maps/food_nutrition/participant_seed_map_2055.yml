@@ -1,0 +1,17 @@
+map:
+  id: food_nutrition_participant_seed_2055
+  scenario_year: 2055
+  domain: food_nutrition
+fixed_nodes:
+  - Grover系量子探索
+  - 食料調達・献立候補
+  - 栄養・アレルギー・在庫・予算・調理制約
+  - 制約を満たす有望候補の探索
+participant_branch_slots:
+  - product_or_service
+  - user
+  - user_activity
+  - everyday_change
+  - social_requirement
+  - unintended_effect
+  - alternative_application

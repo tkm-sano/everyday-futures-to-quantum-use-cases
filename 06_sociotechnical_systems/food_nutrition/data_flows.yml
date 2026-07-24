@@ -1,0 +1,7 @@
+data_flows:
+  - nutrition_requirements
+  - allergy_constraints
+  - inventory
+  - prices
+  - candidate_problem
+  - verified_menu_plan

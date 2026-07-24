@@ -1,0 +1,6 @@
+actors:
+  - service_user
+  - delivery_worker
+  - delivery_operator
+  - quantum_compute_provider
+  - regulator

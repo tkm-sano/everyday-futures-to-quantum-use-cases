@@ -1,0 +1,11 @@
+evidence_status:
+  observed_experiment: 査読済み実験で観測された現在の状態
+  peer_reviewed_foundation: 原著論文に基づくアルゴリズム上の性質
+  official_definition: 政府・公的機関による定義
+  announced_roadmap: 組織が公表した将来目標。達成保証ではない
+  engineering_estimate: 明示した仮定に基づく資源推定
+  benchmark_method: 性能比較の方法論
+  project_scenario: プロジェクトが議論用に固定した未来仮定
+  workshop_derived: 過去のワークショップ記録から得た要素
+  participant_derivation: BoF参加者が追加した派生
+  open_question: 未解決の問い

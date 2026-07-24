@@ -1,0 +1,6 @@
+character:
+  id: traffic_person_001
+  name: provisional
+  role: urban_service_user
+  scenario_year: 2055
+  everyday_activity: 荷物の受け取り

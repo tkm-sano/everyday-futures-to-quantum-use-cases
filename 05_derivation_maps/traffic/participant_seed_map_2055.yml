@@ -1,0 +1,17 @@
+map:
+  id: traffic_participant_seed_2055
+  scenario_year: 2055
+  domain: traffic
+fixed_nodes:
+  - Grover系量子探索
+  - 配送計画候補
+  - 容量・時間窓・勤務・電池制約
+  - 制約を満たす有望候補の探索
+participant_branch_slots:
+  - product_or_service
+  - user
+  - user_activity
+  - everyday_change
+  - social_requirement
+  - unintended_effect
+  - alternative_application

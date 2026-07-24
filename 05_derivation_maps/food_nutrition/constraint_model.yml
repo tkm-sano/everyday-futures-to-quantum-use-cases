@@ -1,0 +1,9 @@
+constraints:
+  - minimum_nutrition
+  - maximum_nutrition
+  - allergy_exclusion
+  - inventory_availability
+  - budget_limit
+  - preparation_capacity
+  - food_safety
+  - dietary_restriction

@@ -1,0 +1,10 @@
+relation_types:
+  - operates
+  - provides_data
+  - consumes_data
+  - authorizes
+  - audits
+  - verifies
+  - receives_service
+  - bears_risk
+  - provides_fallback

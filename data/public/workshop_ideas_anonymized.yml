@@ -1,0 +1,18 @@
+records:
+  - domain: traffic
+    source_ref: WS02/IDEA2034
+    text: 配達時間なし
+    privacy:
+      anonymized: true
+      contains_personal_information: false
+    publication:
+      status: pending_review
+
+  - domain: food_nutrition
+    source_ref: WS14/IDEA3012
+    text: 旬、価格、栄養素を考慮した食事候補
+    privacy:
+      anonymized: true
+      contains_personal_information: false
+    publication:
+      status: pending_review

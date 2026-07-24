@@ -1,0 +1,8 @@
+contract:
+  id: quantum_search_result
+  outputs:
+    - measured_candidate
+    - success_probability_estimate
+    - repetition_count
+    - verification_result
+    - fallback_status

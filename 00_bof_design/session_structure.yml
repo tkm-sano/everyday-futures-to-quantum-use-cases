@@ -1,0 +1,13 @@
+session:
+  duration_minutes: 90
+  phases:
+    - id: framing
+      duration_minutes: 10
+    - id: individual_story_exploration
+      duration_minutes: 15
+    - id: small_group_derivation
+      duration_minutes: 20
+    - id: plenary_mapping
+      duration_minutes: 35
+    - id: reflection
+      duration_minutes: 10

@@ -1,0 +1,13 @@
+roadmaps:
+  - source_ref: darpa_qbi
+    target: evaluate whether industrially useful utility-scale operation is possible by 2033
+    claim_type: official_program_goal
+  - source_ref: ibm_quantum_roadmap
+    target: published fault-tolerant roadmap milestones
+    claim_type: vendor_goal_subject_to_change
+  - source_ref: google_qec_milestone
+    target: milestone-based path toward useful error-corrected quantum computing
+    claim_type: vendor_goal
+  - source_ref: microsoft_quantum_roadmap
+    target: foundational, resilient, and scale implementation levels
+    claim_type: vendor_goal
