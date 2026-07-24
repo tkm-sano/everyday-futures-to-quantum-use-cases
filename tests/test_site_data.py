@@ -1,9 +1,10 @@
 import json
+import runpy
 from pathlib import Path
 
-from tools.build_site_data import build_explorer_data
-
 ROOT = Path(__file__).resolve().parents[1]
+BUILD_SITE_DATA = runpy.run_path(ROOT / "tools/build_site_data.py")
+build_explorer_data = BUILD_SITE_DATA["build_explorer_data"]
 
 
 def test_explorer_data_matches_source_yaml() -> None:
