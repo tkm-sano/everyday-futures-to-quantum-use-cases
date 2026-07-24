@@ -1,55 +1,283 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="2055年の日常生活から量子ユースケースを考える研究・BoFプロジェクト">
-  <title>Everyday Futures to Quantum Use Cases</title>
+  <meta name="description" content="A Birds-of-a-Feather session for developing quantum use cases from future everyday life scenarios.">
+  <meta name="theme-color" content="#f4f8ff">
+  <title>Developing Quantum Use Cases from Future Everyday Life Scenarios</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <header>
-    <a class="brand" href="#top">Everyday Futures <span>to Quantum Use Cases</span></a>
-    <nav>
-      <a href="#baseline">2055 Baseline</a>
-      <a href="#domains">Domains</a>
-      <a href="#method">Method</a>
+  <canvas id="quantum-bubbles" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Developing Quantum Use Cases home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48">
+          <circle cx="24" cy="24" r="3"></circle>
+          <ellipse cx="24" cy="24" rx="19" ry="8"></ellipse>
+          <ellipse cx="24" cy="24" rx="19" ry="8" transform="rotate(60 24 24)"></ellipse>
+          <ellipse cx="24" cy="24" rx="19" ry="8" transform="rotate(120 24 24)"></ellipse>
+        </svg>
+      </span>
+      <span class="brand-copy">
+        <strong>QUANTUM USE CASES</strong>
+        <small>FUTURE EVERYDAY LIFE</small>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="Open navigation"
+      aria-controls="site-nav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#question">Question</a>
+      <a href="#session">Session</a>
+      <a href="#stories">Stories</a>
+      <a href="#people">People</a>
+      <a class="nav-cta" href="https://github.com/tkm-sano/everyday-futures-to-quantum-use-cases">
+        GitHub
+      </a>
     </nav>
   </header>
 
   <main id="top">
-    <section class="hero">
-      <p class="eyebrow">IEEE Quantum Week 2026 · Birds of a Feather</p>
-      <h1>2055年の日常生活から、<br>量子ユースケースを派生させる。</h1>
-      <p class="lead">固定された量子探索基盤から、製品・サービス、人物の活動、生活変化、社会的な問いまでを接続する。</p>
-      <p class="note">2055年は実用化予測ではなく、比較のためのproject scenarioである。</p>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-statement">
+        <p class="kicker">IEEE Quantum Week · Birds of a Feather Proposal</p>
+        <h1 id="hero-title">
+          Developing quantum<br>
+          use cases from<br>
+          future everyday<br>
+          life scenarios.
+        </h1>
+      </div>
+
+      <div class="hero-categories" aria-label="Session approach">
+        <h2><span></span>Session<br>Approach</h2>
+        <div class="category-grid">
+          <article>
+            <b>1.</b>
+            <p>Future<br>Everyday<br>Life</p>
+          </article>
+          <article>
+            <b>2.</b>
+            <p>Quantum<br>Use<br>Cases</p>
+          </article>
+        </div>
+      </div>
+
+      <p class="hero-subline">
+        Begin with changes people would like to see in everyday life, then explore where and how
+        quantum technologies might contribute.
+      </p>
+      <p class="scenario-note">An interactive, story-based, 90-minute BoF session.</p>
     </section>
 
-    <section id="baseline" class="section">
-      <p class="eyebrow">Common engineering baseline</p>
-      <h2>一つの技術軸、二つの実行方式</h2>
-      <div id="baseline-grid" class="grid three"></div>
+    <section id="about" class="content-section" aria-labelledby="about-title">
+      <div class="section-heading">
+        <span aria-hidden="true"></span>
+        <div>
+          <p>Motivation and objectives</p>
+          <h2 id="about-title">Start from life, not from a predefined technology problem</h2>
+        </div>
+      </div>
+      <div class="overview-grid">
+        <article class="card">
+          <small>Starting point</small>
+          <h3>Desired changes in everyday life</h3>
+          <p>
+            Participants consider burdens, constraints, activities, and experiences they would
+            like to change, realize, or explore further.
+          </p>
+        </article>
+        <article class="card">
+          <small>Exploration</small>
+          <h3>Possible quantum contributions</h3>
+          <p>
+            Short future-life stories help participants discuss where quantum computing,
+            networking, sensing, or hybrid systems might become relevant.
+          </p>
+        </article>
+        <article class="card">
+          <small>Outcome</small>
+          <h3>Shared questions and connections</h3>
+          <p>
+            The session connects visions, technical capabilities, domain expertise, concerns,
+            and opportunities for interdisciplinary collaboration.
+          </p>
+        </article>
+      </div>
     </section>
 
-    <section id="domains" class="section">
-      <p class="eyebrow">Initial domains</p>
-      <h2>同じ技術粒度で比較する</h2>
-      <div id="domain-grid" class="grid two"></div>
+    <section id="question" class="content-section question-section" aria-labelledby="question-title">
+      <div class="section-heading">
+        <span aria-hidden="true"></span>
+        <div>
+          <p>Guiding question</p>
+          <h2 id="question-title">The question organizing the session</h2>
+        </div>
+      </div>
+      <blockquote>
+        Where and how might quantum technologies contribute to changes in everyday life that
+        participants would like to see realized or explored further?
+      </blockquote>
     </section>
 
-    <section id="method" class="section">
-      <p class="eyebrow">Derivation method</p>
-      <h2>参加者が考える範囲</h2>
-      <ol class="steps">
-        <li><b>01</b><span>2055年、Grover系探索、候補、制約までを固定する。</span></li>
-        <li><b>02</b><span>探索結果を利用する製品・サービスを派生させる。</span></li>
-        <li><b>03</b><span>一人の利用者と具体的な活動を定める。</span></li>
-        <li><b>04</b><span>日常生活の変化、必要条件、副作用、別の派生を記録する。</span></li>
+    <section id="session" class="content-section" aria-labelledby="session-title">
+      <div class="section-heading">
+        <span aria-hidden="true"></span>
+        <div>
+          <p>90-minute session</p>
+          <h2 id="session-title">Five phases from framing to reflection</h2>
+        </div>
+      </div>
+      <ol class="timeline">
+        <li>
+          <b>01.</b>
+          <div><h3>Framing and audience engagement</h3><p>Purpose, guiding question, examples, and live polling.</p></div>
+          <time>10 min</time>
+        </li>
+        <li>
+          <b>02.</b>
+          <div><h3>Story-based individual exploration</h3><p>Select a future-life story and record responses, keywords, diagrams, or sketches.</p></div>
+          <time>15 min</time>
+        </li>
+        <li>
+          <b>03.</b>
+          <div><h3>Small-group discussion</h3><p>Share ideas across technical and professional backgrounds.</p></div>
+          <time>20 min</time>
+        </li>
+        <li>
+          <b>04.</b>
+          <div><h3>Plenary discussion</h3><p>Examine selected ideas, possible quantum contributions, reasons, and open questions.</p></div>
+          <time>35 min</time>
+        </li>
+        <li>
+          <b>05.</b>
+          <div><h3>Reflection and closing</h3><p>Identify an insight or topic to explore further.</p></div>
+          <time>10 min</time>
+        </li>
       </ol>
+    </section>
+
+    <section class="content-section" aria-labelledby="exploration-title">
+      <div class="section-heading">
+        <span aria-hidden="true"></span>
+        <div>
+          <p>Individual and plenary exploration</p>
+          <h2 id="exploration-title">Prompts that move from stories to use cases</h2>
+        </div>
+      </div>
+      <div class="prompt-columns">
+        <article>
+          <span class="prompt-number">1.</span>
+          <h3>Individual prompts</h3>
+          <ul>
+            <li>Which change in the story is most significant?</li>
+            <li>What change would you like to see realized or explored?</li>
+            <li>Where might quantum technologies be relevant?</li>
+          </ul>
+        </article>
+        <article>
+          <span class="prompt-number">2.</span>
+          <h3>Plenary perspectives</h3>
+          <ul>
+            <li>Change in everyday life</li>
+            <li>Possible contribution of quantum technologies</li>
+            <li>Reasons a capability might be relevant</li>
+            <li>Technical, practical, and social questions</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="stories" class="content-section" aria-labelledby="stories-title">
+      <div class="section-heading">
+        <span aria-hidden="true"></span>
+        <div>
+          <p>Future-story development</p>
+          <h2 id="stories-title">Three examples of everyday-life change</h2>
+        </div>
+      </div>
+      <div class="story-grid">
+        <article class="story-card">
+          <b>01.</b>
+          <h3>Less conscious coordination</h3>
+          <p>
+            Scheduling, delivery, mobility, and service availability are coordinated in the
+            background, reducing manual negotiation, waiting, and logistical constraints.
+          </p>
+          <small>Possible relation: combinatorial optimization and quantum algorithms</small>
+        </article>
+        <article class="story-card">
+          <b>02.</b>
+          <h3>Less constraint from physical distance</h3>
+          <p>
+            People live, work, collaborate, and manage distant environments without being
+            strongly constrained by geographical proximity.
+          </p>
+          <small>Possible relation: quantum sensing for remote and sensory-rich experiences</small>
+        </article>
+        <article class="story-card">
+          <b>03.</b>
+          <h3>Less conscious energy management</h3>
+          <p>
+            Everyday devices and mobility systems obtain energy from surrounding sources and
+            local infrastructure without routine charging management.
+          </p>
+          <small>Possible relation: quantum simulation for materials and chemistry research</small>
+        </article>
+      </div>
+      <p class="story-note">
+        Stories combine fictional characters, familiar situations, products or services, and
+        technological and social assumptions. They are designed for open discussion rather than
+        prediction.
+      </p>
+    </section>
+
+    <section id="people" class="content-section" aria-labelledby="people-title">
+      <div class="section-heading">
+        <span aria-hidden="true"></span>
+        <div>
+          <p>Audience and organizers</p>
+          <h2 id="people-title">A meeting point for different forms of expertise</h2>
+        </div>
+      </div>
+      <div class="people-grid">
+        <article>
+          <h3>Who should join</h3>
+          <p>
+            Researchers, engineers, practitioners, and students interested in quantum
+            applications and everyday life - including hardware, software, networking,
+            hybrid systems, application domains, business, policy, governance, and education.
+          </p>
+          <p>No use case needs to be prepared in advance.</p>
+        </article>
+        <article>
+          <h3>BoF authors</h3>
+          <ul class="author-list">
+            <li><strong>Takuma Sano</strong><span>Keio University · moderator</span></li>
+            <li><strong>Haruka Shiina</strong><span>Keio University</span></li>
+            <li><strong>Reiko Iwasaki</strong><span>Keio University</span></li>
+            <li><strong>Akihito Soeda</strong><span>National Institute of Informatics</span></li>
+            <li><strong>Shota Nagayama</strong><span>Keio University · corresponding organizer</span></li>
+          </ul>
+        </article>
+      </div>
     </section>
   </main>
 
-  <footer>Everyday Futures to Quantum Use Cases · 2055 project scenario</footer>
+  <footer class="site-footer">
+    <p>Developing Quantum Use Cases from Future Everyday Life Scenarios</p>
+    <small>Birds-of-a-Feather session proposal</small>
+  </footer>
+
+  <script src="./bubbles.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>

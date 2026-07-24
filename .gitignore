@@ -1,6 +1,9 @@
 # Private workshop records
 /data/private/
 /data/intermediate/
+
+# Unpublished source documents
+/data/private/source-documents/
 *_private.*
 *_confidential.*
 *_participants.*

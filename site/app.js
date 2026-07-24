@@ -1,25 +1,27 @@
-async function loadData() {
-  const response = await fetch("./data/generated-project.json");
-  if (!response.ok) throw new Error("Project data could not be loaded.");
-  return response.json();
+function setupNavigation() {
+  const toggle = document.querySelector(".nav-toggle");
+  const nav = document.querySelector(".site-nav");
+  if (!toggle || !nav) return;
+
+  function closeNavigation() {
+    nav.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Open navigation");
+  }
+
+  toggle.addEventListener("click", () => {
+    const isOpen = nav.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    toggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+  });
+
+  nav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeNavigation);
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1100) closeNavigation();
+  });
 }
-function baselineCard(title, text) {
-  return `<article class="card"><small>Engineering baseline</small><h3>${title}</h3><p>${text}</p></article>`;
-}
-function domainCard(item) {
-  return `<article class="card"><small>Application domain</small><h3>${item.title}</h3><dl>
-    <dt>Candidate</dt><dd>${item.candidate}</dd>
-    <dt>Constraints</dt><dd>${item.constraints}</dd>
-    <dt>Service</dt><dd>${item.service}</dd>
-    <dt>Everyday change</dt><dd>${item.change}</dd>
-    <dt>Open question</dt><dd>${item.question}</dd>
-  </dl></article>`;
-}
-async function main() {
-  const data = await loadData();
-  document.querySelector("#baseline-grid").innerHTML =
-    baselineCard(String(data.scenarioYear), data.scenarioStatus) +
-    data.modes.map(mode => baselineCard(mode.title, mode.description)).join("");
-  document.querySelector("#domain-grid").innerHTML = data.domains.map(domainCard).join("");
-}
-main().catch(console.error);
+
+setupNavigation();

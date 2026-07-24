@@ -1,87 +1,172 @@
-# Everyday Futures to Quantum Use Cases
+# Developing Quantum Use Cases from Future Everyday Life Scenarios
 
-2055年の日常生活から量子ユースケースを構想する研究・BoFリポジトリである。
+IEEE Quantum WeekのBirds-of-a-Feather（BoF）セッションに向け、未来の日常生活から
+量子ユースケースを考えるための提案、ワークショップ設計、具体化例、検証ツール、
+Webサイトを管理するリポジトリです。
 
-IEEE Quantum Week 2026 Birds-of-a-Featherセッションに向け、2055年の技術・社会前提、
-Grover系量子探索の工学基盤、交通・配送および食料・栄養の派生マップ、未来ストーリー、
-ワークショップ資料、Webサイトを管理する。
+従来の技術能力、ロードマップ、産業課題から始める方法を補完し、参加者が実現または
+さらに検討したい日常生活の変化を出発点とします。短い未来ストーリーを通じて、
+量子技術がどこで、どのように貢献し得るかを複数の専門分野から議論します。
 
-> 2055年は実用化予測ではなく、比較のために固定する **project scenario** である。
+## Guiding question
 
-## Scope
+> Where and how might quantum technologies contribute to changes in everyday life that
+> participants would like to see realized or explored further?
 
-共通基盤はGrover search、quantum amplitude amplification、Grover-based quantum
-minimum findingである。実行方式は古典処理と量子探索を組み合わせるhybrid executionと、
-探索の計算核を主に量子回路内で実行するquantum-dominant executionを区別する。
+参加者はユースケースを事前に準備する必要はありません。量子ハードウェア、ソフトウェア、
+ネットワーク、ハイブリッドシステムに加え、応用領域、ビジネス、政策、ガバナンス、
+教育などの関心や経験を持ち寄ることを想定しています。
 
-初期領域は次の二つである。
+## Session overview
 
-1. Traffic and delivery planning
-2. Food and nutrition planning
+90分のセッションは5フェーズで構成します。
 
-詳しい設計原則は[`docs/framework.md`](docs/framework.md)を参照する。
+| Phase | Activity | Time |
+|---|---|---:|
+| 1 | Framing and audience engagement | 10 min |
+| 2 | Story-based individual exploration | 15 min |
+| 3 | Small-group discussion | 20 min |
+| 4 | Plenary discussion | 35 min |
+| 5 | Reflection and closing | 10 min |
+
+未来ストーリーを読んだ参加者は、次の問いを起点に個人検討と対話を進めます。
+
+1. Which change in everyday life depicted in the story is most significant?
+2. What change would you like to see realized or explored?
+3. Where might quantum technologies be relevant?
+
+全体討議では、日常生活の変化、量子技術の貢献可能性、その理由、技術的・実務的・
+社会的な問いを整理します。
+
+## Repository scope
+
+本リポジトリには、BoF提案のほか、方法を検討するための具体化例が含まれます。
+
+- **BoF proposal and website**
+
+  未来の日常生活から量子ユースケースを検討する、技術領域を限定しないセッション提案
+- **Working scenario and engineering artifacts**
+
+  2055年を議論用の`project_scenario`として固定し、Grover系量子探索を交通・配送と
+  食料・栄養へ具体化した検討資料
+- **Workshop and publication controls**
+
+  セッション構成、派生マップ、公開判定、匿名化、技術レビューの管理資料
+- **Validation utilities**
+
+  YAML、派生マップ、公開対象データ、サイト構造を検査するPythonツール
+
+2055年やGrover系探索は、BoF全体の対象範囲を限定するものではなく、このリポジトリで
+方法を具体化・検証するための一つの作業例です。また、2055年は実用化予測ではありません。
+
+## Website
+
+<https://tkm-sano.github.io/everyday-futures-to-quantum-use-cases/>
+
+ホームページは、BoF提案書
+`data/private/source-documents/QCE26_proposal_2111.pdf`の内容を基に構成しています。
+Q/ESTのデザイン言語を踏襲した静的HTML、CSS、JavaScriptで実装しています。
+
+元PDFは公開リポジトリへコミットせず、`data/private/`以下でローカル管理します。
+サイトには提案書から整理した目的、Guiding Question、セッション構造、未来ストーリー例、
+対象者、主催者情報を掲載しています。
 
 ## Repository structure
 
 ```text
 content/
-  framework/       2055年シナリオ、量子探索基盤、根拠、資源仮定
-  use-cases/       交通・配送、食料・栄養のモデル、派生マップ、ストーリー
-  workshop/        セッション、提示物、議論記録
+  framework/       シナリオ条件、量子探索基盤、根拠、資源仮定
+  use-cases/       領域別モデル、派生マップ、人物、未来ストーリー
+  workshop/        セッション構造、提示計画、議論記録
 data/
   public/          公開確認済みデータ
-  private/         未匿名化・非公開データ（Git対象外）
+  private/         未匿名化データと非公開原本（Git対象外）
   intermediate/    公開判断前の加工データ（Git対象外）
-docs/              フレームワーク、データ方針、根拠、運営ガイド
-schemas/           YAML正本のJSON Schemaと型定義
-tools/             検証、公開データ検査、サイトデータ生成
-site/              GitHub Pages用の静的サイト
+docs/
+  framework.md     目的、用語、量子探索基盤、派生方法
+  data-policy.md   同意、匿名化、データ分類、公開判定
+  evidence.md      根拠区分、参照クラス、不確実性
+  workshop-guide.md
+                     セッション、制作、レビュー
+schemas/           JSON Schemaと型定義
+site/              GitHub Pages用静的サイト
 tests/             リポジトリ構造とシナリオ条件のテスト
+tools/             検証、公開データ検査、参考計算
 ```
 
-## Data policy
+## Data and publication policy
 
-未匿名化原本、参加者情報、音声、逐語録、同意情報をコミットしない。GitHubおよび
-GitHub Pagesへ公開するのは、匿名化・公開確認が完了し、
-`publication.status: approved`が付与されたデータだけとする。
+未匿名化原本、参加者情報、音声、逐語録、同意記録、公開判断前のデータをコミットしません。
+公開リポジトリではPagesに表示されないファイルも閲覧できるため、保存場所とGit追跡状態の
+両方を確認します。
 
-詳細は[`docs/data-policy.md`](docs/data-policy.md)を参照する。
+公開ステータスは次のように扱います。
 
-## Local validation
+| Status | Meaning |
+|---|---|
+| `pending_review` | 公開判断前 |
+| `internal_only` | 内部利用限定 |
+| `approved` | 匿名化・同意・公開方針の確認済み |
+
+実在する参加者由来データは、`approved`になるまで`data/private/`または
+`data/intermediate/`で管理します。詳細は
+[`docs/data-policy.md`](docs/data-policy.md)を参照してください。
+
+## Local setup and validation
+
+Python 3.11以上を使用します。
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
+```
 
+検証：
+
+```bash
 python tools/validate_repository.py
 python tools/scan_public_data.py
-python tools/build_site_data.py
 pytest
 ruff check tools tests
 ```
 
-ローカルでサイトを確認する場合：
+ローカルサイト：
 
 ```bash
 python -m http.server 8000 --directory site
 ```
 
+<http://localhost:8000/>を開きます。
+
+## GitHub Pages deployment
+
+`main`の`site/`、`content/`、公開データ検査、またはPages workflowに変更があると、
+GitHub Actionsが公開データ検査を行い、`site/`をGitHub Pagesへデプロイします。
+
+Workflow：
+
+- [Validate repository](.github/workflows/validate.yml)
+- [Deploy GitHub Pages](.github/workflows/deploy-pages.yml)
+
 ## Documentation
 
-- [`docs/framework.md`](docs/framework.md): 目的、問い、用語、量子探索基盤、派生方法
-- [`docs/data-policy.md`](docs/data-policy.md): データ分類、同意、匿名化、公開判定
-- [`docs/evidence.md`](docs/evidence.md): 根拠区分、参照クラス、不確実性
-- [`docs/workshop-guide.md`](docs/workshop-guide.md): セッション、制作、レビュー
+- [Framework](docs/framework.md)
+- [Data and publication policy](docs/data-policy.md)
+- [Evidence and uncertainty](docs/evidence.md)
+- [Workshop and production guide](docs/workshop-guide.md)
+- [Contributing](CONTRIBUTING.md)
+- [Citation metadata](CITATION.cff)
 
-## GitHub Pages
+## BoF authors
 
-`main`へ関連変更をpushすると、GitHub ActionsがYAML正本からサイト用JSONを生成し、
-`site/`を公開する。
-
-<https://tkm-sano.github.io/everyday-futures-to-quantum-use-cases/>
+- Takuma Sano — Keio University; moderator
+- Haruka Shiina — Keio University
+- Reiko Iwasaki — Keio University
+- Akihito Soeda — National Institute of Informatics
+- Shota Nagayama — Keio University; corresponding organizer
 
 ## License
 
-コードはMIT Licenseで提供する。文章、図、画像、参加者由来コンテンツは、公開許諾を
-確認後に別途利用条件を定める。
+コードは[MIT License](LICENSE)で提供します。文章、図、画像、参加者由来コンテンツは、
+公開許諾と適用する利用条件を個別に確認してください。

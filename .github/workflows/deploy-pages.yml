@@ -6,7 +6,6 @@ on:
     paths:
       - "site/**"
       - "content/**"
-      - "tools/build_site_data.py"
       - "tools/scan_public_data.py"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
@@ -30,7 +29,6 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -e .
-      - run: python tools/build_site_data.py
       - run: python tools/scan_public_data.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
