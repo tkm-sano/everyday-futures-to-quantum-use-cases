@@ -6,10 +6,12 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_required_paths_exist() -> None:
     required = [
         ".gitignore",
-        "03_scenario_assumptions/common_2055/target_year.yml",
-        "04_quantum_search_baseline/README.md",
-        "05_derivation_maps/traffic/engineering_map_2055.yml",
-        "05_derivation_maps/food_nutrition/engineering_map_2055.yml",
+        "content/framework/target-year.yml",
+        "content/use-cases/traffic/engineering-map-2055.yml",
+        "content/use-cases/food-nutrition/engineering-map-2055.yml",
+        "docs/framework.md",
+        "schemas/derivation-map.schema.json",
+        "tools/validate_repository.py",
         "site/index.html",
         ".github/workflows/deploy-pages.yml",
     ]

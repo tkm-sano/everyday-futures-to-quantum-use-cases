@@ -5,9 +5,9 @@ on:
     branches: ["main"]
     paths:
       - "site/**"
-      - "03_scenario_assumptions/**"
-      - "05_derivation_maps/**"
-      - "18_src/build_site_data.py"
+      - "content/**"
+      - "tools/build_site_data.py"
+      - "tools/scan_public_data.py"
       - ".github/workflows/deploy-pages.yml"
   workflow_dispatch:
 
@@ -30,8 +30,8 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -e .
-      - run: python 18_src/build_site_data.py
-      - run: python 18_src/scan_public_data.py
+      - run: python tools/build_site_data.py
+      - run: python tools/scan_public_data.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

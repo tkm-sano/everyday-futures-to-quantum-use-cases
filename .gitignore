@@ -22,8 +22,8 @@
 /data/**/*.csv
 
 # Image generation temporary outputs
-/11_image_generation/raw_outputs/
-/11_image_generation/rejected_outputs/
+/content/workshop/assets/raw-outputs/
+/content/workshop/assets/rejected-outputs/
 
 # Website outputs
 /site/node_modules/
@@ -33,6 +33,7 @@
 /site/.vite/
 /site/.next/
 /site/out/
+/site/data/generated-project.json
 
 # Python
 __pycache__/
@@ -45,6 +46,7 @@ htmlcov/
 .venv/
 venv/
 env/
+*.egg-info/
 
 # Node
 node_modules/

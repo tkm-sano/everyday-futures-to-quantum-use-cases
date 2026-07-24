@@ -5,3 +5,5 @@
 3. 量子ユーティリティの主張には古典ベースラインと総費用を含める。
 4. 派生マップのノードとエッジには型と状態を付ける。
 5. 公開データには `publication.status: approved` を付ける。
+
+詳細は[`docs/data-policy.md`](docs/data-policy.md)を参照する。

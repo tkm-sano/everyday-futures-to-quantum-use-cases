@@ -1,5 +1,5 @@
 async function loadData() {
-  const response = await fetch("./data/project.json");
+  const response = await fetch("./data/generated-project.json");
   if (!response.ok) throw new Error("Project data could not be loaded.");
   return response.json();
 }

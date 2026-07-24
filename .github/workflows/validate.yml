@@ -18,7 +18,7 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -e ".[dev]"
-      - run: python 18_src/validate_repository.py
-      - run: python 18_src/scan_public_data.py
+      - run: python tools/validate_repository.py
+      - run: python tools/scan_public_data.py
       - run: pytest
-      - run: ruff check 18_src tests
+      - run: ruff check tools tests
