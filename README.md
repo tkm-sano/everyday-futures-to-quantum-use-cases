@@ -162,7 +162,8 @@ Workflow：
 
 - [Framework](docs/framework.md)
 - [Explore Use Cases content workplan (Japanese)](docs/explore-use-cases-content-workplan-ja.md)
-- [M1-01–M1-07 background ideas and story trunks (Japanese)](docs/m1-01-to-m1-07-background-ideas-story-trunks-mermaid-ja.md)
+- [M1-01〜M1-07 背景アイデア整理・ストーリーの幹](docs/m1-01-to-m1-07-background-ideas-story-trunks-mermaid-ja.md)
+- [QCE26 BoF 当日90分用スライド構成案](docs/qce26-bof-90-minute-slide-structure-ja.md)
 - [Data and publication policy](docs/data-policy.md)
 - [Evidence and uncertainty](docs/evidence.md)
 - [Workshop and production guide](docs/workshop-guide.md)
