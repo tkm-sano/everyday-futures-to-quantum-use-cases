@@ -68,16 +68,14 @@ Webサイトを管理するリポジトリです。
 Q/ESTのデザイン言語を踏襲した静的HTML、CSS、JavaScriptで実装しています。
 
 元PDFは公開リポジトリへコミットせず、`data/private/`以下でローカル管理します。
-サイトには提案書から整理した目的、Guiding Question、セッション構造、未来ストーリー例、
-対象者、主催者情報を掲載しています。
+サイトにはプロジェクト概要、2055年シナリオ、BoF、メンバー、ワークショップ背景を
+Aboutページとして掲載しています。
 
 ページ構成：
 
-- `/`：既存のBoFトップページ
-- `/about/`：プロジェクト、2055年シナリオ、BoF、メンバー、ワークショップ背景
-- `/explore/`：Story → Seed → Lensの6段階探索フロー
+- `/`：Aboutページ
 
-探索データは`content/use-cases/`と`content/framework/`のYAMLを正本とし、
+探索データは公開ページとは分け、`content/use-cases/`と`content/framework/`のYAMLを正本とし、
 `python tools/build_site_data.py`で`site/data/explorer.json`へ変換します。
 
 ## Repository structure
@@ -163,7 +161,7 @@ Workflow：
 - [Framework](docs/framework.md)
 - [Explore Use Cases content workplan (Japanese)](docs/explore-use-cases-content-workplan-ja.md)
 - [M1-01〜M1-07 背景アイデア整理・ストーリーの幹](docs/m1-01-to-m1-07-background-ideas-story-trunks-mermaid-ja.md)
-- [QCE26 BoF 当日90分用スライド構成案](docs/qce26-bof-90-minute-slide-structure-ja.md)
+- [QCE26 BoF 90分セッション・スライド構成案](docs/qce26-bof-90-minute-session-and-slide-plan-ja.md)
 - [Data and publication policy](docs/data-policy.md)
 - [Evidence and uncertainty](docs/evidence.md)
 - [Workshop and production guide](docs/workshop-guide.md)

@@ -13,9 +13,6 @@ def test_required_paths_exist() -> None:
         "schemas/derivation-map.schema.json",
         "tools/validate_repository.py",
         "site/index.html",
-        "site/about/index.html",
-        "site/explore/index.html",
-        "site/explore/explore.js",
         "site/data/explorer.json",
         ".github/workflows/deploy-pages.yml",
     ]
@@ -23,22 +20,12 @@ def test_required_paths_exist() -> None:
         assert (ROOT / relative_path).exists(), relative_path
 
 
-def test_site_header_uses_the_revised_information_architecture() -> None:
-    forbidden_items = [
-        "Story Worlds",
-        "Seed Library",
-        "Discussion",
-        "Resources",
-        "Use Case Explorer",
-    ]
-    for relative_path in [
-        "site/index.html",
-        "site/about/index.html",
-        "site/explore/index.html",
-    ]:
-        html = (ROOT / relative_path).read_text(encoding="utf-8")
-        navigation = html.split("<nav", maxsplit=1)[1].split("</nav>", maxsplit=1)[0]
-        assert "About Us" in navigation
-        assert "Explore Use Cases" in navigation
-        assert "Start Exploring" in navigation
-        assert all(item not in navigation for item in forbidden_items)
+def test_site_only_exposes_the_about_page() -> None:
+    html = (ROOT / "site/index.html").read_text(encoding="utf-8")
+
+    assert "About Us" in html
+    assert "Explore Use Cases" not in html
+    assert "Start Exploring" not in html
+    assert "<nav" not in html
+    assert not (ROOT / "site/about/index.html").exists()
+    assert not (ROOT / "site/explore/index.html").exists()
