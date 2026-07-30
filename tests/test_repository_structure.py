@@ -23,7 +23,7 @@ def test_required_paths_exist() -> None:
 def test_site_only_exposes_the_about_page() -> None:
     html = (ROOT / "site/index.html").read_text(encoding="utf-8")
 
-    assert "About Us" in html
+    assert "BoF Title" in html
     assert "Explore Use Cases" not in html
     assert "Start Exploring" not in html
     assert "<nav" not in html
