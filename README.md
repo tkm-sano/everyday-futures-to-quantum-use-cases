@@ -74,6 +74,8 @@ Aboutページとして掲載しています。
 ページ構成：
 
 - `/`：Aboutページ
+- `/explore/`：未来の日常生活ストーリーの一覧
+- `/explore/story-1/`：2035年の交通・エネルギー協調を扱うインタラクティブストーリー
 
 探索データは公開ページとは分け、`content/use-cases/`と`content/framework/`のYAMLを正本とし、
 `python tools/build_site_data.py`で`site/data/explorer.json`へ変換します。

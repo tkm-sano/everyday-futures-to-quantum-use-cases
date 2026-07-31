@@ -20,12 +20,14 @@ def test_required_paths_exist() -> None:
         assert (ROOT / relative_path).exists(), relative_path
 
 
-def test_site_only_exposes_the_about_page() -> None:
-    html = (ROOT / "site/index.html").read_text(encoding="utf-8")
+def test_site_exposes_about_and_story_explorer_pages() -> None:
+    about_html = (ROOT / "site/index.html").read_text(encoding="utf-8")
+    explore_html = (ROOT / "site/explore/index.html").read_text(encoding="utf-8")
+    story_html = (ROOT / "site/explore/story-1/index.html").read_text(encoding="utf-8")
 
-    assert "BoF Title" in html
-    assert "Explore Use Cases" not in html
-    assert "Start Exploring" not in html
-    assert "<nav" not in html
+    assert "BoF Title" in about_html
+    assert "Explore Use Cases" in about_html
+    assert '<nav class="site-nav"' in about_html
+    assert "Story 1" in explore_html
+    assert "Traffic and Energy Coordination" in story_html
     assert not (ROOT / "site/about/index.html").exists()
-    assert not (ROOT / "site/explore/index.html").exists()
