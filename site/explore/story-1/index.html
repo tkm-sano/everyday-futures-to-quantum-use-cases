@@ -3,82 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Explore a future story about traffic and energy coordination during extreme heat.">
+  <meta name="description" content="Explore future everyday-life stories and consider where quantum technologies might contribute.">
   <meta name="theme-color" content="#f4f8ff">
-  <title>Smart City | Everyday Futures to Quantum Use Cases</title>
-  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
-  <link rel="stylesheet" href="../../styles.css">
-  <link rel="stylesheet" href="./story-1.css">
-  <style>
-    .scene-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1.5rem;
-      align-items: stretch;
-    }
-
-    .scene-grid .scene-card {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      margin: 0;
-    }
-
-    .scene-grid .scene-copy {
-      flex: 1;
-    }
-
-    .scene-grid .scene-explorer {
-      margin-top: auto;
-    }
-
-    .explore-guide {
-      margin: 0 auto 2rem;
-      padding: 1.5rem;
-      border: 1px solid rgba(28, 63, 102, 0.16);
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.78);
-      box-shadow: 0 14px 34px rgba(26, 52, 86, 0.08);
-    }
-
-    .explore-guide h2,
-    .explore-guide h3 {
-      margin-top: 0;
-    }
-
-    .explore-guide h3 {
-      margin-bottom: 0.75rem;
-      font-size: 1.05rem;
-    }
-
-    .explore-guide ol {
-      margin: 0 0 1rem 1.4rem;
-      padding: 0;
-    }
-
-    .explore-guide li {
-      margin-bottom: 0.85rem;
-    }
-
-    .explore-guide li p {
-      margin: 0.25rem 0 0;
-    }
-
-    .explore-guide .guide-note {
-      margin: 0.75rem 0 1.25rem;
-    }
-
-    .explore-guide .plenary-note {
-      margin-bottom: 0;
-      font-weight: 600;
-    }
-
-    @media (max-width: 820px) {
-      .scene-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <title>Explore Use Cases | Everyday Futures to Quantum Use Cases</title>
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
   <canvas id="quantum-bubbles" aria-hidden="true"></canvas>
@@ -86,7 +15,7 @@
   <header class="site-header">
     <a class="brand" href="https://q-est.org/" target="_blank" rel="noopener noreferrer"
       aria-label="Visit the Q/est website">
-      <img class="brand-logo" src="../../assets/qest-logo-icon.png" alt="">
+      <img class="brand-logo" src="../assets/qest-logo-icon.png" alt="">
       <span class="brand-copy"><strong>Q/est</strong></span>
       <span class="brand-divider" aria-hidden="true"></span>
       <span class="brand-institute">
@@ -95,98 +24,35 @@
       </span>
     </a>
     <nav class="site-nav" aria-label="Primary navigation">
-      <a href="../../index.html">About Us</a>
-      <a href="../index.html" aria-current="page">Explore Use Cases</a>
+      <a href="../index.html">About Us</a>
+      <a href="./index.html" aria-current="page">Explore Use Cases</a>
     </nav>
   </header>
 
-  <main class="story-main">
-    <section class="story-hero" aria-labelledby="story-page-title">
-      <p class="kicker">Story 1</p>
-      <h1 id="story-page-title">Smart City</h1>
-      <p class="story-intro">Read the story, explore each scene, and discuss what kind of future you would like to see.</p>
+  <main class="subpage-main explore-list-main">
+    <section class="subpage-hero explore-list-hero" aria-labelledby="explore-page-title">
+      <p class="kicker">Future everyday-life stories</p>
+      <h1 id="explore-page-title">Explore Use Cases</h1>
+      <p>Explore future everyday-life stories and consider where quantum technologies might contribute.</p>
     </section>
 
-    <section class="explore-guide" aria-labelledby="explore-guide-title">
-      <h2 id="explore-guide-title">How to Explore the Story</h2>
-
-      <h3>Discuss in your group</h3>
-      <ol>
-        <li>Read the moments and choose something that catches your attention.</li>
-        <li>
-          Describe your reaction.
-          <p>Are you curious about it, concerned about it, or interested in improving it?</p>
-        </li>
-        <li>
-          Share why it caught your attention.
-          <p>What change in everyday life do you notice? What question or “what if” does it suggest?</p>
-        </li>
-      </ol>
-
-      <p class="guide-note">These are not strict categories. They are simply starting points for expressing your reaction to the story. There is no single correct interpretation.</p>
-
-      <h3>If your group is ready, consider the following</h3>
-      <ol start="4">
-        <li>What kind of product, service, system, rule, or social change might make this future better?</li>
-        <li>Where might quantum technologies contribute—and what other technologies or conditions would also be needed?</li>
-      </ol>
-
-      <p class="plenary-note">We will explore Steps 4 and 5 further in the plenary discussion.</p>
-    </section>
-
-    <nav class="story-progress" aria-label="Story workshop steps">
-      <a href="#story"><span>1</span>Explore the Story</a>
-    </nav>
-
-    <section class="workshop-section" id="story" aria-labelledby="story-step-title">
+    <section class="content-section" aria-labelledby="stories-title">
       <div class="section-heading">
         <span aria-hidden="true"></span>
-        <div><p>Step 1</p><h2 id="story-step-title">Explore the Story</h2></div>
+        <div>
+          <p>Stories</p>
+          <h2 id="stories-title">Choose a story to explore</h2>
+        </div>
       </div>
-
-      <div class="scene-grid">
-
-      <article class="scene-card" id="scene-1" aria-labelledby="scene-1-title">
-        <header class="scene-heading"><h3 id="scene-1-title">Moment 1</h3></header>
-        <div class="scene-copy">
-          <p>Taro, a university student, was looking for drinking water near a station in Tokyo’s waterfront district. He was about to head to his part-time delivery job, but the convenience store shelves were empty and the lights inside had been dimmed.</p>
-          <p>Just then, a delivery request appeared on his phone. He remembered that he had registered this time slot as available. Taro relied on delivery work to help cover his living expenses. After glancing once more at the empty shelves, he tapped “Accept Request.”</p>
-        </div>
-        <div class="scene-explorer" data-scene="scene1"></div>
-      </article>
-
-      <article class="scene-card" id="scene-2" aria-labelledby="scene-2-title">
-        <header class="scene-heading"><h3 id="scene-2-title">Moment 2</h3></header>
-        <div class="scene-copy">
-          <p>When Taro arrived at the delivery hub and boarded his assigned vehicle, the destinations and route appeared on the onboard display. His “Route Compliance Score” appeared beside them. Taro felt relieved to see that it met the required standard.</p>
-          <p>He checked the vehicle’s remaining battery level and the restricted operating zones, consented to the use of his driving data, and set off along the designated route.</p>
-        </div>
-        <div class="scene-explorer" data-scene="scene2"></div>
-      </article>
-
-      <article class="scene-card" id="scene-3" aria-labelledby="scene-3-title">
-        <header class="scene-heading"><h3 id="scene-3-title">Moment 3</h3></header>
-        <div class="scene-copy">
-          <p>Taro drove along the designated route, checking each time to make sure that no violations had been recorded.</p>
-          <p>During the delivery, he became intensely thirsty. When he selected a nearby water station on the terminal, a warning appeared stating that leaving the designated route would reduce his pay and lower his Route Compliance Score.</p>
-          <p>Even so, when Taro left the route, the screen displayed the message, “Your driving data may be shared with external evaluation agencies.” Despite the urgency of the situation, Taro recorded both the warning shown on his watch and the notification sent to his smartphone.</p>
-        </div>
-        <div class="scene-explorer" data-scene="scene3"></div>
-      </article>
-
-      <article class="scene-card" id="scene-4" aria-labelledby="scene-4-title">
-        <header class="scene-heading"><h3 id="scene-4-title">Moment 4</h3></header>
-        <div class="scene-copy">
-          <p>Taro is considering raising an objection with the people responsible for the Urban Integrated Management System. Although greater stability in daily life is one of the system’s benefits, he is deeply dissatisfied with a system that does not adequately consider drivers’ health conditions or individual circumstances.</p>
-        </div>
-        <div class="scene-explorer" data-scene="scene4"></div>
-      </article>
-
+      <div class="use-case-grid">
+        <a class="use-case-card" href="./story-1/index.html">
+          <span class="use-case-meta"><strong>Story 1</strong></span>
+          <h3>Smart City</h3>
+          <p>Explore how everyday life, work, mobility, and energy are coordinated in a future city.</p>
+          <span class="use-case-link">Explore this story <span aria-hidden="true">→</span></span>
+        </a>
       </div>
-
-      <a class="section-back" href="#story-page-title">Back to story overview ↑</a>
     </section>
-
   </main>
 
   <footer class="site-footer">
@@ -194,7 +60,6 @@
     <small>Birds-of-a-Feather session</small>
   </footer>
 
-  <script src="../../bubbles.js"></script>
-  <script src="./story-1.js"></script>
+  <script src="../bubbles.js"></script>
 </body>
 </html>
