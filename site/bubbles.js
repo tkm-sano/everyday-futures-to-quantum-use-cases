@@ -2,6 +2,7 @@ const canvas = document.querySelector("#quantum-bubbles");
 
 if (canvas) {
   const context = canvas.getContext("2d");
+  const bubbleColor = canvas.dataset.color || "33, 179, 243";
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const bubbles = [];
   let animationFrame;
@@ -51,7 +52,7 @@ if (canvas) {
       const pulse = reducedMotion ? 0 : Math.sin(timestamp * 0.0015 + bubble.phase) * 0.12;
       context.beginPath();
       context.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
-      context.fillStyle = `rgba(33, 179, 243, ${bubble.opacity + pulse})`;
+      context.fillStyle = `rgba(${bubbleColor}, ${bubble.opacity + pulse})`;
       context.fill();
     });
 
