@@ -747,6 +747,28 @@ main {
   outline-offset: 3px;
 }
 
+.use-case-card.food-card {
+  border-color: #cfe5d1;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(121, 189, 130, 0.2), transparent 9rem),
+    rgba(250, 255, 250, 0.88);
+}
+
+.use-case-card.food-card:hover,
+.use-case-card.food-card:focus-visible {
+  border-color: #9fcda4;
+  box-shadow: 0 14px 30px rgba(51, 105, 61, 0.12);
+}
+
+.use-case-card.food-card:focus-visible {
+  outline-color: rgba(121, 189, 130, 0.42);
+}
+
+.food-card .use-case-meta,
+.food-card .use-case-link {
+  color: #397a45;
+}
+
 .use-case-meta {
   display: flex;
   align-items: center;
