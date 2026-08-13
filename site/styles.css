@@ -769,6 +769,28 @@ main {
   color: #397a45;
 }
 
+.use-case-card.society-card {
+  border-color: #edd9c1;
+  background:
+    radial-gradient(circle at 92% 8%, rgba(228, 163, 92, 0.22), transparent 9rem),
+    rgba(255, 250, 244, 0.9);
+}
+
+.use-case-card.society-card:hover,
+.use-case-card.society-card:focus-visible {
+  border-color: #dcb582;
+  box-shadow: 0 14px 30px rgba(137, 79, 31, 0.12);
+}
+
+.use-case-card.society-card:focus-visible {
+  outline-color: rgba(228, 163, 92, 0.44);
+}
+
+.society-card .use-case-meta,
+.society-card .use-case-link {
+  color: #a35a22;
+}
+
 .use-case-meta {
   display: flex;
   align-items: center;
