@@ -29,6 +29,6 @@ def test_site_exposes_about_and_story_explorer_pages() -> None:
     assert "Explore Use Cases" in about_html
     assert '<nav class="site-nav"' in about_html
     assert "Story 1" in explore_html
-    assert "<h3>Smart City</h3>" in explore_html
-    assert '<h1 id="story-page-title">Smart City</h1>' in story_html
+    assert "<h3>City</h3>" in explore_html
+    assert '<h1 id="story-page-title">City</h1>' in story_html
     assert not (ROOT / "site/about/index.html").exists()
