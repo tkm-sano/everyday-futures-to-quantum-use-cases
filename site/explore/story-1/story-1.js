@@ -1,9 +1,10 @@
 const SLIDO_URL = "#";
+const FEEDBACK_FORM_URL = "#";
 
 const storyScenes = {
   scene1: {
     image: "../../assets/story-1/scene-1.webp",
-    aspectRatio: "4 / 3",
+    aspectRatio: "3 / 2",
     alt: "A waterfront city with coordinated buildings, factories, and delivery hubs.",
     hotspots: [
       {
@@ -13,7 +14,7 @@ const storyScenes = {
         y: 6,
         width: 37,
         height: 28,
-        statement: "The buildings use materials designed to respond to the urban heat island effect and reflected heat.",
+        statement: "Materials designed to respond to the urban heat island effect and reflected heat.",
       },
       {
         id: "factory",
@@ -22,7 +23,7 @@ const storyScenes = {
         y: 52,
         width: 26,
         height: 25,
-        statement: "The factory adjusts production so it makes only the necessary and sufficient amount of products for that day.",
+        statement: "Production adjusted to make only the necessary and sufficient amount of products for that day.",
       },
       {
         id: "delivery-hub",
@@ -31,7 +32,7 @@ const storyScenes = {
         y: 55,
         width: 32,
         height: 29,
-        statement: "The delivery hub adjusts operations so the day’s packages are delivered with only the necessary and sufficient number of vehicles and total electricity.",
+        statement: "Operations adjusted so the day’s packages are delivered with only the necessary and sufficient number of vehicles and total electricity.",
       },
     ],
   },
@@ -47,7 +48,7 @@ const storyScenes = {
         y: 56,
         width: 24,
         height: 27,
-        statement: "Deliveries follow routes that adapt to changes in logistics conditions and the traffic environment.",
+        statement: "Routes adapted to changes in logistics conditions and the traffic environment.",
       },
       {
         id: "battery",
@@ -56,7 +57,7 @@ const storyScenes = {
         y: 49,
         width: 25,
         height: 17,
-        statement: "The battery is developed not only to extend driving range, but also to meet environmental and social standards across resource procurement, manufacturing, use, and disposal.",
+        statement: "Developed not only to extend driving range, but also to meet environmental and social standards across resource procurement, manufacturing, use, and disposal.",
       },
       {
         id: "vehicle",
@@ -65,7 +66,7 @@ const storyScenes = {
         y: 21,
         width: 49,
         height: 51,
-        statement: "New vehicles are designed with materials and structures suited to the environmental conditions and everyday use patterns of the regions where they operate.",
+        statement: "Materials and structures suited to the environmental conditions and everyday use patterns of the regions where they operate.",
       },
     ],
   },
@@ -81,7 +82,7 @@ const storyScenes = {
         y: 50,
         width: 28,
         height: 35,
-        statement: "Delivery is supported by forecasts of localized weather phenomena that may occur in the operating area during the driving period.",
+        statement: "Forecasts of localized weather phenomena that may occur in the operating area during the driving period.",
       },
       {
         id: "wearable-device",
@@ -90,7 +91,7 @@ const storyScenes = {
         y: 72,
         width: 14,
         height: 15,
-        statement: "The worker wears a device that understands their physical characteristics and checks their current physical condition during working hours.",
+        statement: "Current physical condition checked during working hours, based on the worker’s physical characteristics.",
       },
     ],
   },
@@ -101,12 +102,12 @@ const storyScenes = {
     hotspots: [
       {
         id: "water-station",
-        label: "Water Station",
+        label: "Water",
         x: 43,
         y: 19,
         width: 16,
         height: 49,
-        statement: "A stable water supply is available throughout the year, regardless of climate conditions.",
+        statement: "Stable water supply available throughout the year, regardless of climate conditions.",
       },
       {
         id: "compensation",
@@ -115,7 +116,7 @@ const storyScenes = {
         y: 8,
         width: 34,
         height: 33,
-        statement: "Work assignments and compensation are adjusted using accumulated past work data and data collected during that day’s working hours.",
+        statement: "Work assignments and compensation adjusted using accumulated past work data and data collected during that day’s working hours.",
       },
       {
         id: "complaint",
@@ -124,7 +125,7 @@ const storyScenes = {
         y: 48,
         width: 34,
         height: 42,
-        statement: "Workers have a mechanism to challenge decisions they feel are unfair by using data collected during that day’s work.",
+        statement: "Mechanism for challenging decisions felt to be unfair by using data collected during that day’s work.",
       },
     ],
   },
@@ -132,6 +133,30 @@ const storyScenes = {
 
 let activePanel = null;
 let activeButton = null;
+let scenarioHotspotNumber = 0;
+
+function positionPanel(button, panel) {
+  const margin = 14;
+  const gap = 10;
+  const buttonBox = button.getBoundingClientRect();
+  const panelBox = panel.getBoundingClientRect();
+  const maxLeft = Math.max(margin, window.innerWidth - panelBox.width - margin);
+  const maxTop = Math.max(margin, window.innerHeight - panelBox.height - margin);
+  const centeredLeft = buttonBox.left + (buttonBox.width / 2) - (panelBox.width / 2);
+  const belowTop = buttonBox.bottom + gap;
+  const aboveTop = buttonBox.top - panelBox.height - gap;
+  const preferredTop = belowTop <= maxTop ? belowTop : aboveTop;
+
+  panel.style.left = `${Math.max(margin, Math.min(centeredLeft, maxLeft))}px`;
+  panel.style.top = `${Math.max(margin, Math.min(preferredTop, maxTop))}px`;
+  panel.style.right = "auto";
+}
+
+function repositionActivePanel() {
+  if (activeButton && activePanel && !activePanel.hidden) {
+    positionPanel(activeButton, activePanel);
+  }
+}
 
 function closeActivePanel() {
   if (!activePanel) return;
@@ -150,20 +175,13 @@ function showStatement(button, panel, hotspot) {
 
   closeActivePanel();
   panel.replaceChildren();
-  const title = document.createElement("strong");
   const statement = document.createElement("p");
-  title.textContent = hotspot.label;
   statement.textContent = hotspot.statement;
-  panel.append(title, statement);
-  panel.style.top = `${Math.min(hotspot.y + hotspot.height + 2, 72)}%`;
-  if (hotspot.x > 58) {
-    panel.style.left = "auto";
-    panel.style.right = "14px";
-  } else {
-    panel.style.left = `${Math.min(Math.max(hotspot.x, 3), 52)}%`;
-    panel.style.right = "auto";
-  }
+  panel.append(statement);
+  panel.style.visibility = "hidden";
   panel.hidden = false;
+  positionPanel(button, panel);
+  panel.style.visibility = "";
   button.setAttribute("aria-expanded", "true");
   activePanel = panel;
   activeButton = button;
@@ -192,7 +210,7 @@ function buildScene(mount, sceneKey, scene) {
   fallbackNote.textContent = "The interactive elements remain available.";
   fallback.append(fallbackTitle, fallbackNote);
   instruction.className = "explore-instruction";
-  instruction.textContent = "Select anything that catches your attention.";
+  instruction.textContent = "Click a highlighted area to explore the Scenario.";
   panel.className = "hotspot-panel";
   panel.id = panelId;
   panel.hidden = true;
@@ -201,13 +219,17 @@ function buildScene(mount, sceneKey, scene) {
 
   image.addEventListener("error", () => media.classList.add("image-unavailable"));
 
-  scene.hotspots.forEach((hotspot) => {
+  [...scene.hotspots]
+    .sort((first, second) => (second.width * second.height) - (first.width * first.height))
+    .forEach((hotspot) => {
+    scenarioHotspotNumber += 1;
     const button = document.createElement("button");
     button.type = "button";
     button.className = "hotspot";
-    button.setAttribute("aria-label", hotspot.label);
+    button.setAttribute("aria-label", `Scenario ${scenarioHotspotNumber}: ${hotspot.label}`);
     button.setAttribute("aria-controls", panelId);
     button.setAttribute("aria-expanded", "false");
+    button.dataset.number = String(scenarioHotspotNumber);
     button.style.left = `${hotspot.x}%`;
     button.style.top = `${hotspot.y}%`;
     button.style.width = `${hotspot.width}%`;
@@ -220,10 +242,11 @@ function buildScene(mount, sceneKey, scene) {
   });
 
   media.addEventListener("click", (event) => {
-    if (event.target === media || event.target === image) closeActivePanel();
+    if (event.target === media) closeActivePanel();
   });
   media.prepend(fallback, image);
-  visual.append(media, panel);
+  document.body.append(panel);
+  visual.append(media);
   mount.append(visual, instruction);
 }
 
@@ -236,6 +259,9 @@ document.querySelectorAll("[data-scene]").forEach((mount) => {
 const slidoLink = document.querySelector("#slido-link");
 if (slidoLink) slidoLink.href = SLIDO_URL;
 
+const feedbackLink = document.querySelector("#feedback-link");
+if (feedbackLink) feedbackLink.href = FEEDBACK_FORM_URL;
+
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeActivePanel();
 });
@@ -244,3 +270,6 @@ document.addEventListener("click", (event) => {
   if (!activePanel || activePanel.contains(event.target) || activeButton.contains(event.target)) return;
   closeActivePanel();
 });
+
+window.addEventListener("resize", repositionActivePanel);
+window.addEventListener("scroll", repositionActivePanel, { passive: true });
