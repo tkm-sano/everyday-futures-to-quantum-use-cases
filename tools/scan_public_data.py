@@ -14,7 +14,10 @@ PUBLIC_DIRS = [
 
 PATTERNS = {
     "email": re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.IGNORECASE),
-    "google_drive_url": re.compile(r"https?://docs\.google\.com/", re.IGNORECASE),
+    "google_drive_url": re.compile(
+        r"https?://docs\.google\.com/(?:document|spreadsheets|presentation|drawings|file)/",
+        re.IGNORECASE,
+    ),
 }
 
 
