@@ -1,4 +1,4 @@
-const SLIDO_URL = "#";
+const SLIDO_URL = "https://app.sli.do/event/p136iY5xXwnBzod5LRzq5R";
 const FEEDBACK_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdbT6Df8fZRemX8DzZF_Kj1cB49-ucKFtvrAn8YEbWSDAhKMg/viewform?usp=header";
 
 const storyScenes = {
