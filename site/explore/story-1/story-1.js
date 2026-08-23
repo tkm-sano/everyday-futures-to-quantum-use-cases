@@ -149,10 +149,6 @@ let activePanel = null;
 let activeButton = null;
 let scenarioHotspotNumber = 0;
 
-/**
- * Positions the statement panel close to the selected hotspot while
- * keeping the panel inside the viewport.
- */
 function positionPanel(button, panel) {
   const margin = 14;
   const gap = 10;
@@ -194,9 +190,6 @@ function positionPanel(button, panel) {
   panel.style.right = "auto";
 }
 
-/**
- * Closes the currently active statement panel.
- */
 function closeActivePanel() {
   if (!activePanel) return;
 
@@ -211,9 +204,6 @@ function closeActivePanel() {
   activeButton = null;
 }
 
-/**
- * Displays the label and statement belonging to a hotspot.
- */
 function showStatement(button, panel, hotspot) {
   if (activeButton === button) {
     closeActivePanel();
@@ -244,19 +234,19 @@ function showStatement(button, panel, hotspot) {
   activeButton = button;
 }
 
-/**
- * Creates one visible hotspot containing both its number and name.
- */
-function createHotspotButton(hotspot, panel, panelId) {
-  scenarioHotspotNumber += 1;
-
+function createHotspotButton(
+  hotspot,
+  panel,
+  panelId,
+  hotspotNumber
+) {
   const button = document.createElement("button");
   const label = document.createElement("span");
   const number = document.createElement("span");
   const name = document.createElement("span");
 
   const formattedNumber =
-    String(scenarioHotspotNumber).padStart(2, "0");
+    String(hotspotNumber).padStart(2, "0");
 
   button.type = "button";
   button.className = "hotspot";
@@ -277,6 +267,16 @@ function createHotspotButton(hotspot, panel, panelId) {
   button.style.width = `${hotspot.width}%`;
   button.style.height = `${hotspot.height}%`;
 
+  /*
+   * Smaller hotspots receive a higher z-index.
+   * This prevents a large overlapping hotspot from
+   * blocking a smaller hotspot.
+   */
+  const area = hotspot.width * hotspot.height;
+
+  button.style.zIndex =
+    String(10000 - Math.round(area));
+
   label.className = "hotspot-label";
 
   number.className = "hotspot-number";
@@ -290,15 +290,17 @@ function createHotspotButton(hotspot, panel, panelId) {
 
   button.addEventListener("click", (event) => {
     event.stopPropagation();
-    showStatement(button, panel, hotspot);
+
+    showStatement(
+      button,
+      panel,
+      hotspot
+    );
   });
 
   return button;
 }
 
-/**
- * Builds one interactive scene.
- */
 function buildScene(mount, sceneKey, scene) {
   const visual = document.createElement("div");
   const media = document.createElement("div");
@@ -328,7 +330,9 @@ function buildScene(mount, sceneKey, scene) {
   fallback.className = "image-fallback";
   fallback.setAttribute("aria-hidden", "true");
 
-  fallbackTitle.textContent = "Scene image coming soon";
+  fallbackTitle.textContent =
+    "Scene image coming soon";
+
   fallbackNote.textContent =
     "The interactive elements remain available.";
 
@@ -337,7 +341,9 @@ function buildScene(mount, sceneKey, scene) {
     fallbackNote
   );
 
-  instruction.className = "explore-instruction";
+  instruction.className =
+    "explore-instruction";
+
   instruction.textContent =
     "Click a highlighted item to explore the scenario.";
 
@@ -345,33 +351,51 @@ function buildScene(mount, sceneKey, scene) {
   panel.id = panelId;
   panel.hidden = true;
 
-  panel.setAttribute("aria-live", "polite");
-  panel.setAttribute("aria-atomic", "true");
+  panel.setAttribute(
+    "aria-live",
+    "polite"
+  );
 
-  image.addEventListener("error", () => {
-    media.classList.add("image-unavailable");
-  });
+  panel.setAttribute(
+    "aria-atomic",
+    "true"
+  );
+
+  image.addEventListener(
+    "error",
+    () => {
+      media.classList.add(
+        "image-unavailable"
+      );
+    }
+  );
 
   /*
-   * Preserve the order defined in storyScenes.
-   * Do not sort by hotspot size because the numbering should correspond
-   * to the conceptual order of the scenario.
+   * Preserve the conceptual order
+   * defined in storyScenes.
    */
   scene.hotspots.forEach((hotspot) => {
-    const button = createHotspotButton(
-      hotspot,
-      panel,
-      panelId
-    );
+    scenarioHotspotNumber += 1;
+
+    const button =
+      createHotspotButton(
+        hotspot,
+        panel,
+        panelId,
+        scenarioHotspotNumber
+      );
 
     media.append(button);
   });
 
-  media.addEventListener("click", (event) => {
-    if (event.target === media) {
-      closeActivePanel();
+  media.addEventListener(
+    "click",
+    (event) => {
+      if (event.target === media) {
+        closeActivePanel();
+      }
     }
-  });
+  );
 
   media.prepend(
     fallback,
@@ -388,14 +412,14 @@ function buildScene(mount, sceneKey, scene) {
   );
 }
 
-/**
- * Build all scenes declared in the page.
- */
 document
   .querySelectorAll("[data-scene]")
   .forEach((mount) => {
-    const sceneKey = mount.dataset.scene;
-    const scene = storyScenes[sceneKey];
+    const sceneKey =
+      mount.dataset.scene;
+
+    const scene =
+      storyScenes[sceneKey];
 
     if (scene) {
       buildScene(
@@ -406,9 +430,6 @@ document
     }
   });
 
-/**
- * External links.
- */
 const slidoLink =
   document.querySelector("#slido-link");
 
@@ -420,12 +441,10 @@ const feedbackLink =
   document.querySelector("#feedback-link");
 
 if (feedbackLink) {
-  feedbackLink.href = FEEDBACK_FORM_URL;
+  feedbackLink.href =
+    FEEDBACK_FORM_URL;
 }
 
-/**
- * Close the active panel with Escape.
- */
 document.addEventListener(
   "keydown",
   (event) => {
@@ -435,9 +454,6 @@ document.addEventListener(
   }
 );
 
-/**
- * Close the panel when clicking outside it.
- */
 document.addEventListener(
   "click",
   (event) => {
@@ -454,21 +470,12 @@ document.addEventListener(
   }
 );
 
-/**
- * Close the floating explanation panel as soon as the page is scrolled.
- * The hotspot number/name itself remains attached to the image and
- * therefore naturally leaves the viewport together with the image.
- */
 window.addEventListener(
   "scroll",
   closeActivePanel,
   { passive: true }
 );
 
-/**
- * If the viewport changes while the panel is visible,
- * recalculate its position.
- */
 window.addEventListener(
   "resize",
   () => {
