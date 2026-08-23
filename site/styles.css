@@ -17,6 +17,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-height) + 24px);
+  scrollbar-gutter: stable;
 }
 
 body {
@@ -55,9 +56,12 @@ a {
 
 .site-header {
   position: fixed;
-  inset: 0 0 auto;
+  top: 0;
+  right: 0;
+  left: 0;
   z-index: 20;
   display: flex;
+  width: 100%;
   height: var(--header-height);
   align-items: center;
   justify-content: space-between;
