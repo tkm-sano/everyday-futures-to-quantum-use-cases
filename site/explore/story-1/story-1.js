@@ -14,7 +14,8 @@ const storyScenes = {
         y: 6,
         width: 37,
         height: 28,
-        statement: "Buildings made with materials designed to respond to the urban heat island effect and reflected heat.",
+        statement:
+          "Buildings made with materials designed to respond to the urban heat island effect and reflected heat.",
       },
       {
         id: "factory",
@@ -23,16 +24,18 @@ const storyScenes = {
         y: 52,
         width: 26,
         height: 25,
-        statement: "A factory where production is adjusted to make only the necessary and sufficient amount of products for that day.",
+        statement:
+          "A factory where production is adjusted to make only the necessary and sufficient amount of products for that day.",
       },
       {
         id: "delivery-hub",
-        label: "Delivery",
+        label: "Delivery Hub",
         x: 64,
         y: 55,
         width: 32,
         height: 29,
-        statement: "Delivery operations adjusted so the day’s packages are delivered with only the necessary and sufficient number of vehicles and total electricity.",
+        statement:
+          "A delivery hub where operations are adjusted so the day’s packages are delivered with only the necessary and sufficient number of vehicles and total electricity.",
       },
     ],
   },
@@ -49,7 +52,8 @@ const storyScenes = {
         y: 56,
         width: 24,
         height: 27,
-        statement: "A delivery route adapted to changes in logistics conditions and the traffic environment.",
+        statement:
+          "A delivery route adapted to changes in logistics conditions and the traffic environment.",
       },
       {
         id: "battery",
@@ -58,7 +62,8 @@ const storyScenes = {
         y: 49,
         width: 25,
         height: 17,
-        statement: "A battery developed not only to extend driving range, but also to meet environmental and social standards across resource procurement, manufacturing, use, and disposal.",
+        statement:
+          "A battery developed not only to extend driving range, but also to meet environmental and social standards across resource procurement, manufacturing, use, and disposal.",
       },
       {
         id: "vehicle",
@@ -67,7 +72,8 @@ const storyScenes = {
         y: 21,
         width: 49,
         height: 51,
-        statement: "A vehicle made with materials and structures suited to the environmental conditions and everyday use patterns of the region where it operates.",
+        statement:
+          "A vehicle made with materials and structures suited to the environmental conditions and everyday use patterns of the region where it operates.",
       },
     ],
   },
@@ -84,7 +90,8 @@ const storyScenes = {
         y: 50,
         width: 28,
         height: 35,
-        statement: "A weather forecast showing localized weather phenomena that may occur in the operating area during the driving period.",
+        statement:
+          "A weather forecast showing localized weather phenomena that may occur in the operating area during the driving period.",
       },
       {
         id: "wearable-device",
@@ -93,7 +100,8 @@ const storyScenes = {
         y: 72,
         width: 14,
         height: 15,
-        statement: "A wearable device that checks the worker’s current physical condition during working hours, based on the worker’s physical characteristics.",
+        statement:
+          "A wearable device that checks the worker’s current physical condition during working hours, based on the worker’s physical characteristics.",
       },
     ],
   },
@@ -110,7 +118,8 @@ const storyScenes = {
         y: 19,
         width: 16,
         height: 49,
-        statement: "A water station with a stable water supply available throughout the year, regardless of climate conditions.",
+        statement:
+          "A water station that provides a stable water supply throughout the year, regardless of climate conditions.",
       },
       {
         id: "compensation",
@@ -119,7 +128,8 @@ const storyScenes = {
         y: 8,
         width: 34,
         height: 33,
-        statement: "Compensation and work assignments adjusted using accumulated past work data and data collected during that day’s working hours.",
+        statement:
+          "Compensation adjusted together with work assignments using accumulated past work data and data collected during that day’s working hours.",
       },
       {
         id: "complaint",
@@ -128,7 +138,8 @@ const storyScenes = {
         y: 48,
         width: 34,
         height: 42,
-        statement: "A complaint mechanism for challenging decisions felt to be unfair by using data collected during that day’s work.",
+        statement:
+          "A complaint mechanism for challenging decisions felt to be unfair by using data collected during that day’s work.",
       },
     ],
   },
@@ -138,38 +149,71 @@ let activePanel = null;
 let activeButton = null;
 let scenarioHotspotNumber = 0;
 
+/**
+ * Positions the statement panel close to the selected hotspot while
+ * keeping the panel inside the viewport.
+ */
 function positionPanel(button, panel) {
   const margin = 14;
   const gap = 10;
+
   const buttonBox = button.getBoundingClientRect();
   const panelBox = panel.getBoundingClientRect();
-  const maxLeft = Math.max(margin, window.innerWidth - panelBox.width - margin);
-  const maxTop = Math.max(margin, window.innerHeight - panelBox.height - margin);
-  const centeredLeft = buttonBox.left + (buttonBox.width / 2) - (panelBox.width / 2);
+
+  const maxLeft = Math.max(
+    margin,
+    window.innerWidth - panelBox.width - margin
+  );
+
+  const maxTop = Math.max(
+    margin,
+    window.innerHeight - panelBox.height - margin
+  );
+
+  const centeredLeft =
+    buttonBox.left +
+    buttonBox.width / 2 -
+    panelBox.width / 2;
+
   const belowTop = buttonBox.bottom + gap;
   const aboveTop = buttonBox.top - panelBox.height - gap;
-  const preferredTop = belowTop <= maxTop ? belowTop : aboveTop;
 
-  panel.style.left = `${Math.max(margin, Math.min(centeredLeft, maxLeft))}px`;
-  panel.style.top = `${Math.max(margin, Math.min(preferredTop, maxTop))}px`;
+  const preferredTop =
+    belowTop <= maxTop ? belowTop : aboveTop;
+
+  panel.style.left = `${Math.max(
+    margin,
+    Math.min(centeredLeft, maxLeft)
+  )}px`;
+
+  panel.style.top = `${Math.max(
+    margin,
+    Math.min(preferredTop, maxTop)
+  )}px`;
+
   panel.style.right = "auto";
 }
 
-function repositionActivePanel() {
-  if (activeButton && activePanel && !activePanel.hidden) {
-    positionPanel(activeButton, activePanel);
-  }
-}
-
+/**
+ * Closes the currently active statement panel.
+ */
 function closeActivePanel() {
   if (!activePanel) return;
+
   activePanel.hidden = true;
   activePanel.replaceChildren();
-  if (activeButton) activeButton.setAttribute("aria-expanded", "false");
+
+  if (activeButton) {
+    activeButton.setAttribute("aria-expanded", "false");
+  }
+
   activePanel = null;
   activeButton = null;
 }
 
+/**
+ * Displays the label and statement belonging to a hotspot.
+ */
 function showStatement(button, panel, hotspot) {
   if (activeButton === button) {
     closeActivePanel();
@@ -178,102 +222,265 @@ function showStatement(button, panel, hotspot) {
 
   closeActivePanel();
   panel.replaceChildren();
+
+  const title = document.createElement("strong");
+  title.textContent = hotspot.label;
+
   const statement = document.createElement("p");
   statement.textContent = hotspot.statement;
-  panel.append(statement);
+
+  panel.append(title, statement);
+
   panel.style.visibility = "hidden";
   panel.hidden = false;
+
   positionPanel(button, panel);
+
   panel.style.visibility = "";
+
   button.setAttribute("aria-expanded", "true");
+
   activePanel = panel;
   activeButton = button;
 }
 
+/**
+ * Creates one visible hotspot containing both its number and name.
+ */
+function createHotspotButton(hotspot, panel, panelId) {
+  scenarioHotspotNumber += 1;
+
+  const button = document.createElement("button");
+  const label = document.createElement("span");
+  const number = document.createElement("span");
+  const name = document.createElement("span");
+
+  const formattedNumber =
+    String(scenarioHotspotNumber).padStart(2, "0");
+
+  button.type = "button";
+  button.className = "hotspot";
+
+  button.setAttribute(
+    "aria-label",
+    `Scenario ${formattedNumber}: ${hotspot.label}`
+  );
+
+  button.setAttribute("aria-controls", panelId);
+  button.setAttribute("aria-expanded", "false");
+
+  button.dataset.number = formattedNumber;
+  button.dataset.hotspotId = hotspot.id;
+
+  button.style.left = `${hotspot.x}%`;
+  button.style.top = `${hotspot.y}%`;
+  button.style.width = `${hotspot.width}%`;
+  button.style.height = `${hotspot.height}%`;
+
+  label.className = "hotspot-label";
+
+  number.className = "hotspot-number";
+  number.textContent = formattedNumber;
+
+  name.className = "hotspot-name";
+  name.textContent = hotspot.label;
+
+  label.append(number, name);
+  button.append(label);
+
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    showStatement(button, panel, hotspot);
+  });
+
+  return button;
+}
+
+/**
+ * Builds one interactive scene.
+ */
 function buildScene(mount, sceneKey, scene) {
   const visual = document.createElement("div");
   const media = document.createElement("div");
   const image = document.createElement("img");
+
   const fallback = document.createElement("div");
   const fallbackTitle = document.createElement("strong");
   const fallbackNote = document.createElement("small");
+
   const instruction = document.createElement("p");
+
   const panel = document.createElement("div");
   const panelId = `${sceneKey}-statement`;
 
   visual.className = "scene-visual";
+
   media.className = "scene-media";
-  if (scene.aspectRatio) media.style.aspectRatio = scene.aspectRatio;
+
+  if (scene.aspectRatio) {
+    media.style.aspectRatio = scene.aspectRatio;
+  }
+
   image.className = "scene-image";
   image.src = scene.image;
   image.alt = scene.alt;
+
   fallback.className = "image-fallback";
   fallback.setAttribute("aria-hidden", "true");
+
   fallbackTitle.textContent = "Scene image coming soon";
-  fallbackNote.textContent = "The interactive elements remain available.";
-  fallback.append(fallbackTitle, fallbackNote);
+  fallbackNote.textContent =
+    "The interactive elements remain available.";
+
+  fallback.append(
+    fallbackTitle,
+    fallbackNote
+  );
+
   instruction.className = "explore-instruction";
-  instruction.textContent = "Click a highlighted area to explore the Scenario.";
+  instruction.textContent =
+    "Click a highlighted item to explore the scenario.";
+
   panel.className = "hotspot-panel";
   panel.id = panelId;
   panel.hidden = true;
+
   panel.setAttribute("aria-live", "polite");
   panel.setAttribute("aria-atomic", "true");
 
-  image.addEventListener("error", () => media.classList.add("image-unavailable"));
-
-  [...scene.hotspots]
-    .sort((first, second) => (second.width * second.height) - (first.width * first.height))
-    .forEach((hotspot) => {
-      scenarioHotspotNumber += 1;
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "hotspot";
-      button.setAttribute("aria-label", `Scenario ${scenarioHotspotNumber}: ${hotspot.label}`);
-      button.setAttribute("aria-controls", panelId);
-      button.setAttribute("aria-expanded", "false");
-      button.dataset.number = String(scenarioHotspotNumber);
-      button.style.left = `${hotspot.x}%`;
-      button.style.top = `${hotspot.y}%`;
-      button.style.width = `${hotspot.width}%`;
-      button.style.height = `${hotspot.height}%`;
-      button.addEventListener("click", (event) => {
-        event.stopPropagation();
-        showStatement(button, panel, hotspot);
-      });
-      media.append(button);
-    });
-
-  media.addEventListener("click", (event) => {
-    if (event.target === media) closeActivePanel();
+  image.addEventListener("error", () => {
+    media.classList.add("image-unavailable");
   });
 
-  media.prepend(fallback, image);
+  /*
+   * Preserve the order defined in storyScenes.
+   * Do not sort by hotspot size because the numbering should correspond
+   * to the conceptual order of the scenario.
+   */
+  scene.hotspots.forEach((hotspot) => {
+    const button = createHotspotButton(
+      hotspot,
+      panel,
+      panelId
+    );
+
+    media.append(button);
+  });
+
+  media.addEventListener("click", (event) => {
+    if (event.target === media) {
+      closeActivePanel();
+    }
+  });
+
+  media.prepend(
+    fallback,
+    image
+  );
+
   document.body.append(panel);
+
   visual.append(media);
-  mount.append(visual, instruction);
+
+  mount.append(
+    visual,
+    instruction
+  );
 }
 
-document.querySelectorAll("[data-scene]").forEach((mount) => {
-  const sceneKey = mount.dataset.scene;
-  const scene = storyScenes[sceneKey];
-  if (scene) buildScene(mount, sceneKey, scene);
-});
+/**
+ * Build all scenes declared in the page.
+ */
+document
+  .querySelectorAll("[data-scene]")
+  .forEach((mount) => {
+    const sceneKey = mount.dataset.scene;
+    const scene = storyScenes[sceneKey];
 
-const slidoLink = document.querySelector("#slido-link");
-if (slidoLink) slidoLink.href = SLIDO_URL;
+    if (scene) {
+      buildScene(
+        mount,
+        sceneKey,
+        scene
+      );
+    }
+  });
 
-const feedbackLink = document.querySelector("#feedback-link");
-if (feedbackLink) feedbackLink.href = FEEDBACK_FORM_URL;
+/**
+ * External links.
+ */
+const slidoLink =
+  document.querySelector("#slido-link");
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeActivePanel();
-});
+if (slidoLink) {
+  slidoLink.href = SLIDO_URL;
+}
 
-document.addEventListener("click", (event) => {
-  if (!activePanel || activePanel.contains(event.target) || activeButton.contains(event.target)) return;
-  closeActivePanel();
-});
+const feedbackLink =
+  document.querySelector("#feedback-link");
 
-window.addEventListener("resize", repositionActivePanel);
-window.addEventListener("scroll", repositionActivePanel, { passive: true });
+if (feedbackLink) {
+  feedbackLink.href = FEEDBACK_FORM_URL;
+}
+
+/**
+ * Close the active panel with Escape.
+ */
+document.addEventListener(
+  "keydown",
+  (event) => {
+    if (event.key === "Escape") {
+      closeActivePanel();
+    }
+  }
+);
+
+/**
+ * Close the panel when clicking outside it.
+ */
+document.addEventListener(
+  "click",
+  (event) => {
+    if (!activePanel) return;
+
+    if (
+      activePanel.contains(event.target) ||
+      activeButton?.contains(event.target)
+    ) {
+      return;
+    }
+
+    closeActivePanel();
+  }
+);
+
+/**
+ * Close the floating explanation panel as soon as the page is scrolled.
+ * The hotspot number/name itself remains attached to the image and
+ * therefore naturally leaves the viewport together with the image.
+ */
+window.addEventListener(
+  "scroll",
+  closeActivePanel,
+  { passive: true }
+);
+
+/**
+ * If the viewport changes while the panel is visible,
+ * recalculate its position.
+ */
+window.addEventListener(
+  "resize",
+  () => {
+    if (
+      activeButton &&
+      activePanel &&
+      !activePanel.hidden
+    ) {
+      positionPanel(
+        activeButton,
+        activePanel
+      );
+    }
+  }
+);

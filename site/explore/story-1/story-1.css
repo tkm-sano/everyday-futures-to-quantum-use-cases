@@ -44,9 +44,8 @@
 }
 
 .story-progress {
-  position: sticky;
+  position: static;
   z-index: 12;
-  top: 10px;
   display: grid;
   margin: 0 0 34px;
   padding: 8px;
@@ -300,8 +299,16 @@
   border: 1px solid #cfddf0;
   border-radius: 14px;
   background:
-    linear-gradient(145deg, rgba(30, 87, 212, 0.1), rgba(33, 179, 243, 0.08)),
-    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.52) 0 2px, transparent 2px 18px),
+    linear-gradient(
+      145deg,
+      rgba(30, 87, 212, 0.1),
+      rgba(33, 179, 243, 0.08)
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.52) 0 2px,
+      transparent 2px 18px
+    ),
     #edf5ff;
   isolation: isolate;
 }
@@ -342,7 +349,9 @@
   margin: 0 auto 14px;
   border: 2px solid rgba(30, 87, 212, 0.28);
   border-radius: 50%;
-  box-shadow: 23px 8px 0 -10px rgba(33, 179, 243, 0.28), -21px 13px 0 -14px rgba(30, 87, 212, 0.24);
+  box-shadow:
+    23px 8px 0 -10px rgba(33, 179, 243, 0.28),
+    -21px 13px 0 -14px rgba(30, 87, 212, 0.24);
   content: "";
 }
 
@@ -355,6 +364,10 @@
   margin-top: 3px;
 }
 
+/* =========================================================
+   Interactive hotspots
+   ========================================================= */
+
 .hotspot {
   position: absolute;
   z-index: 10;
@@ -366,42 +379,81 @@
   pointer-events: auto;
 }
 
-.hotspot::after {
+/*
+ * Visible hotspot label.
+ *
+ * The JavaScript creates:
+ *
+ * <button class="hotspot">
+ *   <span class="hotspot-label">
+ *     <span class="hotspot-number">01</span>
+ *     <span class="hotspot-name">Buildings</span>
+ *   </span>
+ * </button>
+ *
+ * Because the hotspot itself is positioned absolutely inside
+ * .scene-media, the label moves together with the scene image.
+ */
+.hotspot-label {
   position: absolute;
   top: 50%;
   left: 50%;
-  display: grid;
-  width: 24px;
-  height: 24px;
+  z-index: 2;
+
+  display: inline-flex;
+  max-width: calc(100% - 8px);
+  align-items: center;
+  gap: 7px;
+
+  padding: 6px 10px;
+
   border: 2px solid #fff;
-  border-radius: 50%;
+  border-radius: 999px;
+
   color: #fff;
   background: var(--accent-dark);
-  box-shadow: 0 2px 7px rgba(11, 29, 58, 0.38), 0 0 0 5px rgba(33, 179, 243, 0.21);
-  content: attr(data-number);
+
+  box-shadow:
+    0 2px 7px rgba(11, 29, 58, 0.38),
+    0 0 0 5px rgba(33, 179, 243, 0.21);
+
   font-size: 0.72rem;
   font-weight: 850;
   line-height: 1;
-  place-items: center;
+
+  white-space: nowrap;
+  pointer-events: none;
+
   transform: translate(-50%, -50%);
-  animation: hotspot-pulse 2.6s ease-in-out infinite;
+
+  transition:
+    background 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
 }
 
-.hotspot:hover::after,
-.hotspot[aria-expanded="true"]::after {
+.hotspot:hover .hotspot-label,
+.hotspot[aria-expanded="true"] .hotspot-label {
   background: var(--accent);
-  box-shadow: 0 2px 8px rgba(11, 29, 58, 0.42), 0 0 0 7px rgba(33, 179, 243, 0.28);
+  box-shadow:
+    0 2px 8px rgba(11, 29, 58, 0.42),
+    0 0 0 7px rgba(33, 179, 243, 0.28);
+}
+
+.hotspot-number {
+  flex: 0 0 auto;
+  font-variant-numeric: tabular-nums;
+}
+
+.hotspot-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hotspot:focus-visible {
   outline: 3px solid rgba(33, 179, 243, 0.8);
   outline-offset: -3px;
   background: rgba(33, 179, 243, 0.08);
-}
-
-@keyframes hotspot-pulse {
-  0%, 100% { box-shadow: 0 2px 7px rgba(11, 29, 58, 0.38), 0 0 0 4px rgba(33, 179, 243, 0.15); }
-  50% { box-shadow: 0 2px 7px rgba(11, 29, 58, 0.38), 0 0 0 7px rgba(33, 179, 243, 0.25); }
 }
 
 .explore-instruction {
@@ -411,21 +463,32 @@
   font-weight: 800;
 }
 
+/* =========================================================
+   Hotspot explanation panel
+   ========================================================= */
+
 .hotspot-panel {
   position: fixed;
   z-index: 1000;
   width: min(350px, calc(100vw - 28px));
   max-height: calc(100vh - 28px);
   overflow: auto;
+
   padding: 17px 19px;
+
   border: 1px solid #bcd4f3;
   border-radius: 13px;
+
   color: #000;
   background: rgba(255, 255, 255, 0.97);
+
   box-shadow: 0 13px 30px rgba(25, 60, 114, 0.2);
+
   font-size: 0.87rem;
   line-height: 1.55;
+
   animation: panel-in 140ms ease-out;
+
   pointer-events: auto;
 }
 
@@ -445,8 +508,15 @@
 }
 
 @keyframes panel-in {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .section-back {
@@ -514,7 +584,9 @@
   font-size: 0.88rem;
   font-weight: 850;
   text-decoration: none;
-  transition: background 180ms ease, transform 180ms ease;
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
 }
 
 .primary-button:hover,
@@ -526,7 +598,11 @@
 .cta-section {
   border-color: rgba(30, 87, 212, 0.24);
   background:
-    linear-gradient(135deg, rgba(30, 87, 212, 0.08), rgba(33, 179, 243, 0.11)),
+    linear-gradient(
+      135deg,
+      rgba(30, 87, 212, 0.08),
+      rgba(33, 179, 243, 0.11)
+    ),
     rgba(255, 255, 255, 0.82);
 }
 
@@ -604,7 +680,12 @@
   height: 82px;
   margin: 0 auto 13px;
   border: 8px double #c4d7ee;
-  background: repeating-conic-gradient(#d4e2f3 0 25%, transparent 0 50%) 50% / 14px 14px;
+  background:
+    repeating-conic-gradient(
+      #d4e2f3 0 25%,
+      transparent 0 50%
+    )
+    50% / 14px 14px;
 }
 
 .qr-placeholder strong {
@@ -660,11 +741,20 @@
   padding: clamp(24px, 4vw, 38px);
   border-radius: 15px;
   color: var(--ink);
-  background: linear-gradient(135deg, rgba(30, 87, 212, 0.08), rgba(33, 179, 243, 0.12));
+  background:
+    linear-gradient(
+      135deg,
+      rgba(30, 87, 212, 0.08),
+      rgba(33, 179, 243, 0.12)
+    );
   font-size: clamp(1.2rem, 2.3vw, 1.7rem);
   font-weight: 800;
   text-align: center;
 }
+
+/* =========================================================
+   Tablet
+   ========================================================= */
 
 @media (max-width: 820px) {
   .story-progress {
@@ -694,6 +784,10 @@
   }
 }
 
+/* =========================================================
+   Mobile
+   ========================================================= */
+
 @media (max-width: 640px) {
   .story-main {
     width: min(100% - 24px, 1120px);
@@ -711,6 +805,7 @@
   .story-progress {
     gap: 3px;
     margin-bottom: 20px;
+    grid-template-columns: 1fr;
   }
 
   .story-progress a {
@@ -774,6 +869,12 @@
     font-size: 0.76rem;
   }
 
+  .hotspot-label {
+    gap: 5px;
+    padding: 5px 7px;
+    font-size: 0.62rem;
+  }
+
   .question-list li {
     grid-template-columns: 30px 1fr;
   }
@@ -782,19 +883,19 @@
     width: 100%;
   }
 
-  .story-progress {
-    grid-template-columns: 1fr;
-  }
-
   .definition-item,
   .cta-button {
     width: 100%;
   }
 }
 
+/* =========================================================
+   Reduced motion
+   ========================================================= */
+
 @media (prefers-reduced-motion: reduce) {
-  .hotspot::after {
-    animation: none;
+  .hotspot-label {
+    transition: none;
   }
 
   .hotspot-panel {
