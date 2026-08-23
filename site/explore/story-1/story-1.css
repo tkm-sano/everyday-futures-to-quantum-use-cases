@@ -5,7 +5,7 @@
   width: min(1120px, calc(100% - 40px));
   margin: 0 auto;
   color: #000;
-  padding-top: calc(var(--header-height) + 54px);
+  padding-top: 54px;
 }
 
 .story-hero {
@@ -46,7 +46,7 @@
 .story-progress {
   position: sticky;
   z-index: 12;
-  top: calc(var(--header-height) + 10px);
+  top: 10px;
   display: grid;
   margin: 0 0 34px;
   padding: 8px;
@@ -100,7 +100,7 @@
   background: var(--panel);
   box-shadow: 0 12px 34px rgba(43, 78, 132, 0.08);
   backdrop-filter: blur(12px);
-  scroll-margin-top: calc(var(--header-height) + 100px);
+  scroll-margin-top: 100px;
 }
 
 .compact-section {
@@ -697,7 +697,7 @@
 @media (max-width: 640px) {
   .story-main {
     width: min(100% - 24px, 1120px);
-    padding-top: calc(var(--header-height) + 18px);
+    padding-top: 18px;
   }
 
   .story-hero {
